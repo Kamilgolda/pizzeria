@@ -101,6 +101,29 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ButtonStyle5" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Image Source="cancel.gif" Stretch="Fill">
+                                <Image.Effect>
+                                    <DropShadowEffect/>
+                                </Image.Effect>
+                            </Image>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content=""/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Window.Background>
         <LinearGradientBrush EndPoint="1.012,1.011" StartPoint="-0.275,-0.277">
@@ -137,25 +160,65 @@
         <ScrollViewer Margin="385,70,10,496.8" VerticalScrollBarVisibility="Hidden" Cursor="Hand">
             <StackPanel Height="422.4" Width="278.2">
                 <Label Content="zamówienie1:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
-                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Button Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="zamówienie2:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
-                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Button Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="zamówienie3:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
-                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Button Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="zamówienie4:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
-                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Button Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="zamówienie5:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
-                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Button Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="zamówienie6:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
-                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Button Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="zamówienie7:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
-                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Button Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="zamówienie8:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
-                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Button Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="zamówienie9:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
-                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Button Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
                 <Label Content="zamówienie10:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
-                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Button Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
             </StackPanel>
         </ScrollViewer>
 
