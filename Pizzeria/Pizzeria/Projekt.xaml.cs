@@ -24,5 +24,10 @@ namespace Pizzeria
         {
             InitializeComponent();
         }
+
+        private void Button_nasze_pizze_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

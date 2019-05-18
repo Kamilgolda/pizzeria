@@ -26,6 +26,81 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border BorderBrush="Black" BorderThickness="6" Background="#FF9FD7F9" CornerRadius="10" Opacity="0.3">
+                                <Border.Effect>
+                                    <DropShadowEffect/>
+                                </Border.Effect>
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle3" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border BorderBrush="Black" BorderThickness="6" Background="#FF9FD7F9" CornerRadius="10" Opacity="0.3">
+                                <Border.Effect>
+                                    <DropShadowEffect/>
+                                </Border.Effect>
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="Wlasna kompozycja" IsEnabled="False"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle4" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border BorderBrush="Black" BorderThickness="6" CornerRadius="10" Opacity="0.2">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF77EDA4" Offset="0"/>
+                                        <GradientStop Color="#FF34FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.Effect>
+                                    <DropShadowEffect/>
+                                </Border.Effect>
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Window.Background>
         <LinearGradientBrush EndPoint="1.012,1.011" StartPoint="-0.275,-0.277">
@@ -56,29 +131,39 @@
             </Border.BorderBrush>
 
         </Border>
-        <Border BorderBrush="Black" BorderThickness="10" HorizontalAlignment="Center" Height="772" VerticalAlignment="Center" Width="694" />
+
+
         <Label Content="Twoje zamówienie:" Background="#00000000" FontSize="36" Margin="385,10,-0.4,704.4" Foreground="White" FontFamily="Pristina"/>
-        <Label Content="Twoje zamówienie:" Background="#00000000" FontSize="24" Margin="385,66,-0.4,662.4" FontFamily="Pristina" Foreground="White"/>
-        <Label Content="Twoje zamówienie:" Background="#00000000" FontSize="24" Margin="385,108,-0.4,620.4" FontFamily="Pristina" Foreground="White"/>
-        <Label Content="Twoje zamówienie:" Background="#00000000" FontSize="24" Margin="385,150,-0.4,578.4" FontFamily="Pristina" Foreground="White"/>
-        <Label Content="Twoje zamówienie:" Background="#00000000" FontSize="24" Margin="385,192,-0.4,536.4" FontFamily="Pristina" Foreground="White"/>
-        <Label Content="Twoje zamówienie:" Background="#00000000" FontSize="24" Margin="385,234,-0.4,494.4" FontFamily="Pristina" Foreground="White"/>
-        <Label Content="Do zapłaty:" Background="#00000000" FontSize="24" Margin="481,274,92.6,445.4" FontFamily="Pristina" Foreground="White"/>
+        <ScrollViewer Margin="385,70,10,496.8" VerticalScrollBarVisibility="Hidden" Cursor="Hand">
+            <StackPanel Height="422.4" Width="278.2">
+                <Label Content="zamówienie1:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Label Content="zamówienie2:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Label Content="zamówienie3:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Label Content="zamówienie4:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Label Content="zamówienie5:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Label Content="zamówienie6:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Label Content="zamówienie7:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Label Content="zamówienie8:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Label Content="zamówienie9:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+                <Label Content="zamówienie10:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                <Button Content="" HorizontalAlignment="Right" Height="24.089" Margin="240,-35,5,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Label Content="Do zaplaty:" Background="#00000000" FontSize="24" Margin="481,274,92.6,445.4" FontFamily="Pristina" Foreground="White"/>
         <Label Content="kwota" Background="#00000000" FontSize="24" Margin="585,274,9.6,454.4" FontFamily="Pristina" Foreground="White"/>
-        <Border BorderThickness="6" Margin="0,0,0,-2" Background="#FF9FD7F9" Opacity="0.3" CornerRadius="10" Width="338" HorizontalAlignment="Center" VerticalAlignment="Center" Height="93" BorderBrush="Black" >
-            <Border.Effect>
-                <DropShadowEffect/>
-            </Border.Effect>
-        </Border>
-        <Border BorderThickness="6" Margin="0,0,0,-239" Background="#FF9FD7F9" Opacity="0.3" CornerRadius="10" Width="466" HorizontalAlignment="Center" VerticalAlignment="Center" Height="93" BorderBrush="Black" >
-            <Border.Effect>
-                <DropShadowEffect/>
-            </Border.Effect>
-        </Border>
-
-        <Label Content="Nasze pizze" Foreground="White" FontFamily="Pristina" FontSize="48" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Label Content="Wlasna kompozycja" Foreground="White" FontFamily="Pristina" FontSize="48" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,469,0,219.4" Width="427" HorizontalContentAlignment="Center" Height="82"/>
-
+        <Button Content="Nasze Pizze" HorizontalAlignment="Center" Height="93" Margin="0,320" Style="{DynamicResource ButtonStyle2}" VerticalAlignment="Center" Width="338" FontFamily="Pristina" FontSize="48" IsCancel="True" Foreground="White"/>
+        <Button Content="Wlasna kompozycja" HorizontalAlignment="Center" Height="93" Margin="0,450,0,200" Style="{DynamicResource ButtonStyle3}" VerticalAlignment="Center" Width="466" FontFamily="Pristina" FontSize="48" Foreground="White"/>
+        <Button Content="Zamów" HorizontalAlignment="Center" Height="93" Margin="0,580,0,80" Style="{DynamicResource ButtonStyle4}" VerticalAlignment="Center" Width="547.6" FontFamily="Pristina" FontSize="48" Foreground="White"/>
     </Grid>
 </Window>
 
