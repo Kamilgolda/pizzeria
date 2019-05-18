@@ -24,5 +24,13 @@ namespace Pizzeria
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
+=======
+
+        private void Button_nasze_pizze_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+>>>>>>> parent of 1bcd8c4... dodanie materialu
     }
 }
