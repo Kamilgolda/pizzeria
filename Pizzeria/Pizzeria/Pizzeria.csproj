@@ -94,11 +94,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-<<<<<<< HEAD:Pizzeria/podstrony/Projekt/Projekt/Projekt.csproj
   <ItemGroup>
     <Resource Include="cancel.gif" />
   </ItemGroup>
-=======
->>>>>>> parent of 94de9e5... Menu glowne:Pizzeria/Pizzeria/Pizzeria.csproj
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
