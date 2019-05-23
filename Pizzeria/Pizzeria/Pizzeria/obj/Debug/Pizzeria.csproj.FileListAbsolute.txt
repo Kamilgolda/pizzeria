@@ -1,0 +1,60 @@
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\bin\Debug\Pizzeria.exe.config
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\bin\Debug\Pizzeria.exe
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\bin\Debug\Pizzeria.pdb
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csprojAssemblyReference.cache
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Projekt.g.cs
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\App.g.cs
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria_MarkupCompile.cache
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria_MarkupCompile.lref
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Projekt.baml
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.g.resources
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.Properties.Resources.resources
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csproj.GenerateResource.cache
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csproj.CoreCompileInputs.cache
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.exe
+E:\Downloads\moje programy\C#\pizza\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.pdb
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\bin\Debug\Pizzeria.exe.config
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\bin\Debug\Pizzeria.exe
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\bin\Debug\Pizzeria.pdb
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csprojAssemblyReference.cache
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Projekt.g.cs
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\App.g.cs
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria_MarkupCompile.cache
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria_MarkupCompile.lref
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Projekt.baml
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.g.resources
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.Properties.Resources.resources
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csproj.GenerateResource.cache
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csproj.CoreCompileInputs.cache
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.exe
+E:\Downloads\moje programy\C#\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.pdb
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csprojAssemblyReference.cache
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\App.g.cs
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\Pizzeria_MarkupCompile.cache
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\Pizzeria.exe
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\Pizzeria.pdb
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\bin\Debug\Pizzeria.exe.config
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\bin\Debug\Pizzeria.exe
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\bin\Debug\Pizzeria.pdb
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\Projekt.g.cs
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\Pizzeria_MarkupCompile.lref
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\Projekt.baml
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\Pizzeria.g.resources
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\Pizzeria.Properties.Resources.resources
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csproj.GenerateResource.cache
+C:\Users\kamil\OneDrive\Pulpit\menuglowne\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csproj.CoreCompileInputs.cache
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\bin\Debug\Pizzeria.exe.config
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\bin\Debug\Pizzeria.exe
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\bin\Debug\Pizzeria.pdb
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csprojAssemblyReference.cache
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Projekt.g.cs
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\App.g.cs
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria_MarkupCompile.cache
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria_MarkupCompile.lref
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Projekt.baml
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.g.resources
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.Properties.Resources.resources
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csproj.GenerateResource.cache
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.csproj.CoreCompileInputs.cache
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.exe
+C:\Users\kamil\OneDrive\Pulpit\Pizzeria\Pizzeria\Pizzeria\obj\Debug\Pizzeria.pdb
