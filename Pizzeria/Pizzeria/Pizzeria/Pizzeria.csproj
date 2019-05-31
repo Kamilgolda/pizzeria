@@ -55,6 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="nr1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="nr1Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Projekt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +70,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="nr1.xaml.cs">
+      <DependentUpon>nr1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="nr1Control.xaml.cs">
+      <DependentUpon>nr1Control.xaml</DependentUpon>
     </Compile>
     <Compile Include="Projekt.xaml.cs">
       <DependentUpon>Projekt.xaml</DependentUpon>
@@ -96,6 +110,45 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="cancel.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\bez_niczego.png" />
+    <Resource Include="img\cebula.png" />
+    <Resource Include="img\kukurydza.png" />
+    <Resource Include="img\kurczak.png" />
+    <Resource Include="img\oliwki.png" />
+    <Resource Include="img\papryka.png" />
+    <Resource Include="img\pieczarki.png" />
+    <Resource Include="img\pomidor.png" />
+    <Resource Include="img\ser.png" />
+    <Resource Include="img\sos_pom.png" />
+    <Resource Include="img\szpinak.png" />
+    <Resource Include="img\szynka.png" />
+    <Resource Include="img\tunczyk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\sos_pom2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\kukurydza2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\kurczak2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\oliwki2.png" />
+    <Resource Include="img\pieczarki2.png" />
+    <Resource Include="img\pomidor2.png" />
+    <Resource Include="img\szpinak2.png" />
+    <Resource Include="img\szynka2.png" />
+    <Resource Include="img\tunczyk2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\cebula2.png" />
+    <Resource Include="img\ser2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\papryka2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

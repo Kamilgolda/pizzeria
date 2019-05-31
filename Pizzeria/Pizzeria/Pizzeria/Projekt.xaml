@@ -28,22 +28,27 @@
         </Style>
         <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
             <Setter Property="Template">
+
                 <Setter.Value>
+
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
-                            <Border BorderBrush="Black" BorderThickness="6" Background="#FF9FD7F9" CornerRadius="10" Opacity="0.3">
+                            <Border x:Name="wybor_pizzy" BorderBrush="Black" BorderThickness="6" Background="#FF9FD7F9" CornerRadius="10" Opacity="0.3">
                                 <Border.Effect>
                                     <DropShadowEffect/>
                                 </Border.Effect>
                             </Border>
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsFocused" Value="True"/>
                             <Trigger Property="IsDefaulted" Value="True"/>
-                            <Trigger Property="IsMouseOver" Value="True"/>
                             <Trigger Property="IsPressed" Value="True"/>
                             <Trigger Property="IsEnabled" Value="False"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="wybor_pizzy" Property="Background" Value="#FF009FFF"/>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -54,7 +59,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
-                            <Border BorderBrush="Black" BorderThickness="6" Background="#FF9FD7F9" CornerRadius="10" Opacity="0.3">
+                            <Border x:Name="wlasna_komp" BorderBrush="Black" BorderThickness="6" Background="#FF9FD7F9" CornerRadius="10" Opacity="0.3">
                                 <Border.Effect>
                                     <DropShadowEffect/>
                                 </Border.Effect>
@@ -67,6 +72,9 @@
                             <Trigger Property="IsMouseOver" Value="True"/>
                             <Trigger Property="IsPressed" Value="True"/>
                             <Trigger Property="IsEnabled" Value="False"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="wlasna_komp" Property="Background" Value="#FF009FFF"/>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -77,7 +85,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
-                            <Border BorderBrush="Black" BorderThickness="6" CornerRadius="10" Opacity="0.2">
+                            <Border x:Name="zamow" BorderBrush="Black" BorderThickness="6" CornerRadius="10" Opacity="0.2">
                                 <Border.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="#FF77EDA4" Offset="0"/>
@@ -96,6 +104,9 @@
                             <Trigger Property="IsMouseOver" Value="True"/>
                             <Trigger Property="IsPressed" Value="True"/>
                             <Trigger Property="IsEnabled" Value="False"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="zamow" Property="Background" Value="#FF20D423"/>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -132,7 +143,7 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid x:Name="okno" >
-        <Grid x:Name="menu" Visibility="Collapsed">
+        <Grid x:Name="menu">
 
 
             <Border BorderThickness="4" Margin="0,-1,-4.4,0" Background="#FF71894B" Opacity="0.3" CornerRadius="10" Width="322" HorizontalAlignment="Right" VerticalAlignment="Top" Height="71" >
@@ -159,61 +170,61 @@
             <Label Content="Twoje zamówienie:" Background="#00000000" FontSize="36" Margin="385,10,-0.4,704.4" Foreground="White" FontFamily="Pristina"/>
             <ScrollViewer Margin="385,70,10,496.8" VerticalScrollBarVisibility="Hidden" Cursor="Hand">
                 <StackPanel Height="422.4" Width="278.2">
-                    <Label x:Name="zam" Content="zamówienie1:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                    <Label x:Name="zam" Content="zamówienie1:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina" Visibility="Hidden"/>
                     <Button x:Name="del_zam1_button" Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25" Visibility="Hidden" Click="Del_zam1_button_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Label x:Name="zam1" Content="zamówienie2:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                    <Label x:Name="zam1" Content="zamówienie2:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"  Visibility="Hidden"/>
                     <Button x:Name="del_zam2_button" Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25" Visibility="Hidden" Click="Del_zam2_button_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Label x:Name="zam2" Content="zamówienie3:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                    <Label x:Name="zam2" Content="zamówienie3:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"  Visibility="Hidden"/>
                     <Button x:Name="del_zam3_button" Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25" Visibility="Hidden" Click="Del_zam3_button_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Label x:Name="zam3" Content="zamówienie4:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                    <Label x:Name="zam3" Content="zamówienie4:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"  Visibility="Hidden"/>
                     <Button x:Name="del_zam4_button" Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25" Visibility="Hidden" Click="Del_zam4_button_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Label x:Name="zam4" Content="zamówienie5:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                    <Label x:Name="zam4" Content="zamówienie5:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"  Visibility="Hidden"/>
                     <Button x:Name="del_zam5_button" Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25" Visibility="Hidden" Click="Del_zam5_button_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Label x:Name="zam5" Content="zamówienie6:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                    <Label x:Name="zam5" Content="zamówienie6:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"  Visibility="Hidden"/>
                     <Button x:Name="del_zam6_button" Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25" Visibility="Hidden" Click="Del_zam6_button_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Label x:Name="zam6" Content="zamówienie7:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                    <Label x:Name="zam6" Content="zamówienie7:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"  Visibility="Hidden"/>
                     <Button x:Name="del_zam7_button" Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25" Visibility="Hidden" Click="Del_zam7_button_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Label x:Name="zam7" Content="zamówienie8:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                    <Label x:Name="zam7" Content="zamówienie8:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"  Visibility="Hidden"/>
                     <Button x:Name="del_zam8_button" Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25" Visibility="Hidden" Click="Del_zam8_button_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Label x:Name="zam8" Content="zamówienie9:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                    <Label x:Name="zam8" Content="zamówienie9:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"  Visibility="Hidden"/>
                     <Button x:Name="del_zam9_button" Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25" Visibility="Hidden" Click="Del_zam9_button_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Label x:Name="zam9" Content="zamówienie10:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"/>
+                    <Label x:Name="zam9" Content="zamówienie10:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina"  Visibility="Hidden"/>
                     <Button x:Name="del_zam10_button" Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25" Visibility="Hidden" Click="Del_zam10_button_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
@@ -224,7 +235,7 @@
 
             <Label Content="Do zaplaty:" Background="#00000000" FontSize="24" Margin="481,274,92.6,445.4" FontFamily="Pristina" Foreground="White"/>
             <Label x:Name="suma_label" Content="kwota" Background="#00000000" FontSize="24" Margin="585,274,9.6,454.4" FontFamily="Pristina" Foreground="White"/>
-            <Button x:Name="Wybierz_Pizze_button" Content="Wybierz Pizze" HorizontalAlignment="Center" Height="93" Margin="0,320" Style="{DynamicResource ButtonStyle2}" VerticalAlignment="Center" Width="338" FontFamily="Pristina" FontSize="48" IsCancel="True" Foreground="White" Click="Wybierz_Pizze_button_Click"/>
+            <Button x:Name="Wybierz_Pizze_button" Content="Wybierz Pizze" HorizontalAlignment="Center" Height="93" Margin="0,320" VerticalAlignment="Center" Width="338" FontFamily="Pristina" FontSize="48" IsCancel="True" Foreground="White" Click="Wybierz_Pizze_button_Click" Style="{DynamicResource ButtonStyle2}"/>
             <Button x:Name="wlasna_kompozycja" Content="Wlasna kompozycja" HorizontalAlignment="Center" Height="93" Margin="0,450,0,200" Style="{DynamicResource ButtonStyle3}" VerticalAlignment="Center" Width="466" FontFamily="Pristina" FontSize="48" Foreground="White" Click="kompozycja_Click_1"/>
             <Button x:Name="zamow" Content="Zamów" HorizontalAlignment="Center" Height="93" Margin="0,580,0,80" Style="{DynamicResource ButtonStyle4}" VerticalAlignment="Center" Width="547.6" FontFamily="Pristina" FontSize="48" Foreground="White" Click="zamow_Click_2"/>
         </Grid>
@@ -380,7 +391,79 @@
                 </Button.Background>
 
             </Button>
-            <Ellipse  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Fill="#FFA41313"/>
+            <Ellipse x:Name="pizza"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/bez_niczego.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="sos_pom"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/sos_pom.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="pieczarki"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/pieczarki.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="ser"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/ser.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="pomidor"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/pomidor.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="szynka"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/szynka.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="szpinak"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/szpinak.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <Ellipse x:Name="kukurydza"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/kukurydza.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="kurczak"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/kurczak.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="oliwki"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/oliwki.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="papryka"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/papryka.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
+
+
+            <Ellipse x:Name="cebula"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/cebula.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
+
+
+            <Ellipse x:Name="tunczyk"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="img/tunczyk.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
             <Label x:Name="zl_wyb" Content="zl" HorizontalAlignment="Left" Margin="227,416,0,0" VerticalAlignment="Top" Height="58" Width="71" FontFamily="Pristina" FontSize="36" Foreground="White" Visibility="Hidden"/>
 
 
@@ -394,7 +477,78 @@
 
             <Grid x:Name="pizza_rozmar">
 
-                <Ellipse  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Fill="#FFA41313"/>
+                <Ellipse x:Name="pizza1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/bez_niczego.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Ellipse x:Name="sos_pom1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/sos_pom.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Ellipse x:Name="pieczarki1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/pieczarki.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Ellipse x:Name="ser1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/ser.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Ellipse x:Name="pomidor1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/pomidor.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Ellipse x:Name="szynka1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/szynka.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Ellipse x:Name="szpinak1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/szpinak.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+                <Ellipse x:Name="kukurydza1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/kukurydza.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Ellipse x:Name="kurczak1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/kurczak.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Ellipse x:Name="oliwki1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/oliwki.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Ellipse x:Name="papryka1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/papryka.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+
+
+                <Ellipse x:Name="cebula1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/cebula.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+
+
+                <Ellipse x:Name="tunczyk1"  Height="310" Stroke="Black"  Width="310" Margin="0,81,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="img/tunczyk.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
                 <Button x:Name="rozmiar_srednia2" Content="Srednia " HorizontalAlignment="Right"  Margin="0,420,280,0" VerticalAlignment="Top" Height="40" Width="90" FontFamily="Pristina" FontWeight="Bold" Foreground="#FFF0E5E5" FontSize="18" Click="Rozmiar_srednia2_Click">
                     <Button.Background>
                         <LinearGradientBrush>
@@ -461,75 +615,127 @@
 
                 <Grid x:Name="opcja1">
 
-                    <Grid  Background="#FF2C2C2C" Width="180" HorizontalAlignment="Left" Height="130" Margin="15,0,0,0" >
+                    <Grid x:Name="nr1_g"  Background="#FF2C2C2C" Width="180" HorizontalAlignment="Left" Height="130" Margin="15,0,0,0" MouseLeftButtonDown="Nr1_g_MouseLeftButtonDown" >
 
-                        <Button x:Name="nr1" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr1_Click"/>
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Source="kk.png" Stretch="Fill"/>
+                        <Button x:Name="nr1" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr1_g_MouseLeftButtonDown"/>
+                        <Rectangle x:Name="nr1_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/sos_pom2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+
+
+
 
 
                     </Grid>
 
-                    <Grid Background="#FF2C2C2C" HorizontalAlignment="Center" Width="180" Height="130" >
-                        <Button x:Name="nr2" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr2_Click"/>
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Source="kk.png" Stretch="Fill"/>
+                    <Grid x:Name="nr2_g" Background="#FF2C2C2C" HorizontalAlignment="Center" Width="180" Height="130" MouseLeftButtonDown="Nr2_g_MouseLeftButtonDown" >
+                        <Button x:Name="nr2" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr2_g_MouseLeftButtonDown" />
+                        <Rectangle x:Name="nr2_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180">
+
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/ser2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
                     </Grid>
 
-                    <Grid Background="#FF2C2C2C" HorizontalAlignment="Right" Width="180" Height="130" Margin="0,0,15,0"  >
-                        <Button x:Name="nr3" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr3_Click"/>
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Stretch="Fill" Source="Bez tytułu.png" />
+                    <Grid x:Name="nr3_g" Background="#FF2C2C2C" HorizontalAlignment="Right" Width="180" Height="130" Margin="0,0,15,0" MouseLeftButtonDown="Nr3_g_MouseLeftButtonDown"  >
+                        <Button x:Name="nr3" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr3_g_MouseLeftButtonDown" />
+                        <Rectangle x:Name="nr3_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/pieczarki2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
                     </Grid>
                 </Grid>
 
                 <Grid x:Name="opcja2" Visibility="Hidden">
 
-                    <Grid  Background="#FF2C2C2C" Width="180" HorizontalAlignment="Left" Height="130" Margin="15,0,0,0" >
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Stretch="Fill" Source="Bez tytułu.png"/>
-                        <Button x:Name="nr4" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr4_Click"/>
+                    <Grid x:Name="nr4_g"  Background="#FF2C2C2C" Width="180" HorizontalAlignment="Left" Height="130" Margin="15,0,0,0" MouseLeftButtonDown="Nr4_g_MouseLeftButtonDown" >
+                        <Rectangle x:Name="nr4_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180" >
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/szynka2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Button x:Name="nr4" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr4_g_MouseLeftButtonDown" />
                     </Grid>
 
-                    <Grid Background="#FF2C2C2C" HorizontalAlignment="Center" Width="180" Height="130" >
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Stretch="Fill" Source="kk.png"/>
-                        <Button x:Name="nr5" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr5_Click"/>
+                    <Grid x:Name="nr5_g" Background="#FF2C2C2C" HorizontalAlignment="Center" Width="180" Height="130" MouseLeftButtonDown="Nr5_g_MouseLeftButtonDown" >
+                        <Rectangle x:Name="nr5_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/cebula2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Button x:Name="nr5" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr5_g_MouseLeftButtonDown" />
                     </Grid>
 
-                    <Grid Background="#FF2C2C2C" HorizontalAlignment="Right" Width="180" Height="130" Margin="0,0,15,0"  >
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Stretch="Fill" Source="Bez tytułu.png"/>
-                        <Button x:Name="nr6" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr6_Click"/>
+                    <Grid x:Name="nr6_g" Background="#FF2C2C2C" HorizontalAlignment="Right" Width="180" Height="130" Margin="0,0,15,0" MouseLeftButtonDown="Nr6_g_MouseLeftButtonDown"  >
+                        <Rectangle x:Name="nr6_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/oliwki2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Button x:Name="nr6" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr6_g_MouseLeftButtonDown" />
                     </Grid>
                 </Grid>
 
                 <Grid x:Name="opcja3" Visibility="Hidden">
 
-                    <Grid  Background="#FF2C2C2C" Width="180" HorizontalAlignment="Left" Height="130" Margin="15,0,0,0" >
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Stretch="Fill" Source="kk.png"/>
-                        <Button x:Name="nr7" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr7_Click"/>
+                    <Grid x:Name="nr7_g"  Background="#FF2C2C2C" Width="180" HorizontalAlignment="Left" Height="130" Margin="15,0,0,0" MouseLeftButtonDown="Nr7_g_MouseLeftButtonDown" >
+                        <Rectangle x:Name="nr7_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/papryka2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Button x:Name="nr7" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr7_g_MouseLeftButtonDown" />
                     </Grid>
 
-                    <Grid Background="#FF2C2C2C" HorizontalAlignment="Center" Width="180" Height="130" >
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Stretch="Fill" Source="Bez tytułu.png"/>
-                        <Button x:Name="nr8" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr8_Click"/>
+                    <Grid x:Name="nr8_g" Background="#FF2C2C2C" HorizontalAlignment="Center" Width="180" Height="130" MouseLeftButtonDown="Nr8_g_MouseLeftButtonDown" >
+                        <Rectangle x:Name="nr8_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/szpinak2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Button x:Name="nr8" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr8_g_MouseLeftButtonDown" />
                     </Grid>
 
-                    <Grid Background="#FF2C2C2C" HorizontalAlignment="Right" Width="180" Height="130" Margin="0,0,15,0"  >
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Stretch="Fill" Source="kk.png"/>
-                        <Button x:Name="nr9" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr9_Click"/>
+                    <Grid x:Name="nr9_g" Background="#FF2C2C2C" HorizontalAlignment="Right" Width="180" Height="130" Margin="0,0,15,0" MouseLeftButtonDown="Nr9_g_MouseLeftButtonDown"  >
+                        <Rectangle x:Name="nr9_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/tunczyk2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Button x:Name="nr9" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr9_g_MouseLeftButtonDown"/>
                     </Grid>
                 </Grid>
                 <Grid x:Name="opcja4" Visibility="Hidden">
 
-                    <Grid  Background="#FF2C2C2C" Width="180" HorizontalAlignment="Left" Height="130" Margin="15,0,0,0" >
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Stretch="Fill" Source="kk.png"/>
-                        <Button x:Name="nr10" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr10_Click"/>
+                    <Grid x:Name="nr10_g" Background="#FF2C2C2C" Width="180" HorizontalAlignment="Left" Height="130" Margin="15,0,0,0" MouseLeftButtonDown="Nr10_g_MouseLeftButtonDown" >
+                        <Rectangle x:Name="nr10_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/kukurydza2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Button x:Name="nr10" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr10_g_MouseLeftButtonDown" />
                     </Grid>
 
-                    <Grid Background="#FF2C2C2C" HorizontalAlignment="Center" Width="180" Height="130" >
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Stretch="Fill" Source="Bez tytułu.png"/>
-                        <Button x:Name="nr11" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr11_Click"/>
+                    <Grid x:Name="nr11_g" Background="#FF2C2C2C" HorizontalAlignment="Center" Width="180" Height="130" MouseLeftButtonDown="Nr11_g_MouseLeftButtonDown" >
+                        <Rectangle x:Name="nr11_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/kurczak2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Button x:Name="nr11" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr11_g_MouseLeftButtonDown" />
                     </Grid>
 
-                    <Grid Background="#FF2C2C2C" HorizontalAlignment="Right" Width="180" Height="130" Margin="0,0,15,0"  >
-                        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="180" Stretch="Fill" Source="kk.png"/>
-                        <Button x:Name="nr12" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr12_Click"/>
+                    <Grid x:Name="nr12_g" Background="#FF2C2C2C" HorizontalAlignment="Right" Width="180" Height="130" Margin="0,0,15,0" MouseLeftButtonDown="Nr12_g_MouseLeftButtonDown"  >
+                        <Rectangle x:Name="nr12_img" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="180">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="img/pomidor2.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Button x:Name="nr12" Content="Dodaj" VerticalAlignment="Bottom" Height="30" FontFamily="Pristina" FontSize="18" Click="Nr12_g_MouseLeftButtonDown" />
                     </Grid>
                 </Grid>
 
@@ -659,7 +865,7 @@
         </Grid>
 
 
-        <Grid x:Name="zamowienie" >
+        <Grid x:Name="zamowienie" Visibility="Collapsed" >
 
 
 
@@ -779,7 +985,7 @@
                     </TextBox.BorderBrush>
                 </TextBox>
                 <Label Content="Wpisz 6-cyfrowy kod BLIK:" Background="#00000000" FontSize="36"  Foreground="White" FontFamily="Pristina" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,4,0,81.6"/>
-                <Button Content="Potwierdzam" Height="72"  Style="{DynamicResource ButtonStyle4}" VerticalAlignment="Bottom" Width="190" FontFamily="Pristina" FontSize="36" Foreground="White" HorizontalAlignment="Right" Margin="0,0,7.6,9.6"/>
+                <Button x:Name="potw_blik_button" Content="Potwierdzam" Height="72"  Style="{DynamicResource ButtonStyle4}" VerticalAlignment="Bottom" Width="190" FontFamily="Pristina" FontSize="36" Foreground="White" HorizontalAlignment="Right" Margin="0,0,7.6,9.6" Click="Potw_blik_button_Click"/>
             </Grid>
 
 
@@ -797,8 +1003,8 @@
 
 
             <Label Content="Finalizacja zamówienia:" Background="#00000000" FontSize="36" Margin="22.6,10,362,704.4" Foreground="White" FontFamily="Pristina"/>
-            <Label Content="kwota" Background="#00000000" FontSize="48" Margin="483.4,653,25.6,26.4" FontFamily="Pristina" Foreground="White"/>
-            <Button x:Name="gotowka_button" Content="Gotowka (przy kasie)" HorizontalAlignment="Center" Height="93" Margin="73.2,380.2,73.2,297.6" Style="{DynamicResource ButtonStyle4}" VerticalAlignment="Center" Width="547.6" FontFamily="Pristina" FontSize="48" Foreground="White" BorderBrush="#FF5CF417" Click="Gotowka_button_Click"/>
+            <Label x:Name="do_zaplaty" Content="kwota" Background="#00000000" FontSize="48" Margin="483.4,653,25.6,26.4" FontFamily="Pristina" Foreground="White"/>
+            <Button x:Name="gotowka_button" Content="Gotowka (przy kasie)" HorizontalAlignment="Center" Height="93" Margin="73.2,380.2,73.2,297.6" Style="{DynamicResource ButtonStyle4}" VerticalAlignment="Center" Width="547.6" FontFamily="Pristina" FontSize="48" Foreground="White" BorderBrush="#FF5CF417" Click="Gotowka_button_Click" Visibility="Visible"/>
             <Button x:Name="blik_button" Content="BLIK" HorizontalAlignment="Center" Height="93" Margin="73.2,241,73.2,436.8" Style="{DynamicResource ButtonStyle4}" VerticalAlignment="Center" Width="547.6" FontFamily="Pristina" FontSize="48" Foreground="White" Click="Blik_button_Click"/>
             <Label Content="Wybierz forme platnosci" Background="#00000000" FontSize="48" Margin="0,109.135,0,587.535" Foreground="White" FontFamily="Pristina" HorizontalAlignment="Center" VerticalAlignment="Center" Width="421.49" Height="74.13"/>
 
@@ -834,7 +1040,7 @@
 
             <Label Content="Finalizacja zamówienia:" Background="#00000000" FontSize="36" Margin="22.6,10,362,704.4" Foreground="White" FontFamily="Pristina"/>
             <Label Content="Twoj numerek to:" Background="#00000000" FontSize="72" Margin="0,185.935,0,466.335" Foreground="White" FontFamily="Pristina" HorizontalAlignment="Center" VerticalAlignment="Center" Width="439.49" Height="118.53"/>
-            <Label Content="NUMER" Background="#00000000" FontSize="72" Margin="127.255,309.465,127.255,342.805" Foreground="White" FontFamily="Pristina" HorizontalAlignment="Center" VerticalAlignment="Center" Width="439.49" Height="118.53"/>
+            <Label x:Name="Numer_zamowienia_lab" Content="" Background="#00000000" FontSize="72" Margin="127.255,309.465,127.255,342.805" Foreground="White" FontFamily="Pristina" HorizontalAlignment="Center" VerticalAlignment="Center" Width="439.49" Height="118.53"/>
             <Label Content="Odbierz wydruk z numerkiem i&#xD;&#xA;przy odbiorze okaz go pracownikowi." Background="#00000000" FontSize="48" Margin="0,466.395,0,166.675" Foreground="White" FontFamily="Pristina" HorizontalAlignment="Center" VerticalAlignment="Center" Width="564.29" Height="137.73"/>
         </Grid>
     </Grid>

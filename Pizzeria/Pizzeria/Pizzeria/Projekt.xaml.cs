@@ -55,7 +55,7 @@ namespace Pizzeria
 
         public void SQLopen() // otworz polaczenie z baza danych
         {
-            string connetionString = "Data Source=DESKTOP-O745A5P\\SQLEXPRESS;Initial Catalog=pizzeria;User ID=klient;Password=klient";
+            string connetionString = "Data Source=60087.database.windows.net;Initial Catalog=pizzeria;User ID=w60087;Password=zaq1@WSX";
             SqlConnection polaczenie;
             polaczenie = new SqlConnection(connetionString);
             try
@@ -187,6 +187,18 @@ namespace Pizzeria
                 lab_pizz[7] = skladnik_lab7;
                 lab_pizz[8] = skladnik_lab8;
 
+                sos_pom.Visibility = Visibility.Hidden;
+                ser.Visibility = Visibility.Hidden;
+                pieczarki.Visibility = Visibility.Hidden;
+                szynka.Visibility = Visibility.Hidden;
+                cebula.Visibility = Visibility.Hidden;
+                oliwki.Visibility = Visibility.Hidden;
+                papryka.Visibility = Visibility.Hidden;
+                szpinak.Visibility = Visibility.Hidden;
+                tunczyk.Visibility = Visibility.Hidden;
+                kukurydza.Visibility = Visibility.Hidden;
+                kurczak.Visibility = Visibility.Hidden;
+                pomidor.Visibility = Visibility.Hidden;
                 for (int i = 0; i < 9; i++)
                 {
                     lab_pizz[i].Content = "";
@@ -198,6 +210,30 @@ namespace Pizzeria
                     for (int i = 0; i < 9; i++)
                     {
                         lab_pizz[i].Content = Convert.ToString(dataReader.GetValue(0));
+                        if (Convert.ToString(lab_pizz[i].Content) == "sos pomidorowy")
+                            sos_pom.Visibility = Visibility.Visible;
+                        if (Convert.ToString(lab_pizz[i].Content) == "ser")
+                            ser.Visibility = Visibility.Visible;
+                        if (Convert.ToString(lab_pizz[i].Content) == "pieczarki")
+                            pieczarki.Visibility = Visibility.Visible;
+                        if (Convert.ToString(lab_pizz[i].Content) == "szynka")
+                            szynka.Visibility = Visibility.Visible;
+                        if (Convert.ToString(lab_pizz[i].Content) == "cebula")
+                            cebula.Visibility = Visibility.Visible;
+                        if (Convert.ToString(lab_pizz[i].Content) == "oliwki")
+                            oliwki.Visibility = Visibility.Visible;
+                        if (Convert.ToString(lab_pizz[i].Content) == "papryka")
+                            papryka.Visibility = Visibility.Visible;
+                        if (Convert.ToString(lab_pizz[i].Content) == "szpinak")
+                            szpinak.Visibility = Visibility.Visible;
+                        if (Convert.ToString(lab_pizz[i].Content) == "tunczyk")
+                            tunczyk.Visibility = Visibility.Visible;
+                        if (Convert.ToString(lab_pizz[i].Content) == "kukurydza")
+                            kukurydza.Visibility = Visibility.Visible;
+                        if (Convert.ToString(lab_pizz[i].Content) == "kurczak")
+                            kurczak.Visibility = Visibility.Visible;
+                        if (Convert.ToString(lab_pizz[i].Content) == "pomidor")
+                            pomidor.Visibility = Visibility.Visible;
                         lab_pizz[i].Visibility = Visibility.Visible;
                         
                         if (dataReader.Read() == false) { break; }
@@ -455,12 +491,16 @@ namespace Pizzeria
             rozmiar_cm2.Content ="32cm";
             rozmiar_pizzy = "(srednia)";
             kwota_skl.Content = suma_skladnikow_sr;
+            rozmiar_srednia2.Opacity = 1;
+            rozmiar_duza2.Opacity = 0.5;
         }
         private void Rozmiar_duza2_Click(object sender, RoutedEventArgs e)
         {
             rozmiar_cm2.Content ="48cm";
             rozmiar_pizzy = "(duza)";
             kwota_skl.Content = suma_skladnikow_d;
+            rozmiar_duza2.Opacity = 1;
+            rozmiar_srednia2.Opacity = 0.5;
 
 
         }
@@ -501,15 +541,18 @@ namespace Pizzeria
         //menu wyboru skladnikow {pokazanie wartosci )
 
 
-
-        private void Nr1_Click(object sender, RoutedEventArgs e)
+           
+        private void Nr1_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod1.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod1.Visibility = Visibility.Visible;
                 nr1.Opacity = 0.4;
+                nr1_img.Opacity = 0.4;
                 prod1.Content = nr1.Content;
+                if (Convert.ToString(prod1.Content) == "sos pomidorowy")
+                    sos_pom1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 1;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -522,7 +565,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod1.Visibility = Visibility.Collapsed;
+                sos_pom1.Visibility = Visibility.Hidden;
                 nr1.Opacity = 1;
+                nr1_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -531,14 +576,17 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
-        private void Nr2_Click(object sender, RoutedEventArgs e)
+        private void Nr2_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod2.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod2.Visibility = Visibility.Visible;
                 nr2.Opacity = 0.4;
+                nr2_img.Opacity = 0.4;
                 prod2.Content = nr2.Content;
+                if (Convert.ToString(prod2.Content) == "ser")
+                    ser1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 2;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -550,7 +598,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod2.Visibility = Visibility.Collapsed;
+                ser1.Visibility = Visibility.Hidden;
                 nr2.Opacity = 1;
+                nr2_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -559,14 +609,17 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
-        private void Nr3_Click(object sender, RoutedEventArgs e)
+        private void Nr3_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod3.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod3.Visibility = Visibility.Visible;
                 nr3.Opacity = 0.4;
+                nr3_img.Opacity = 0.4;
                 prod3.Content = nr3.Content;
+                if (Convert.ToString(prod3.Content) == "pieczarki")
+                    pieczarki1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 3;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -578,7 +631,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod3.Visibility = Visibility.Collapsed;
+                pieczarki1.Visibility = Visibility.Hidden;
                 nr3.Opacity = 1;
+                nr3_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -588,14 +643,17 @@ namespace Pizzeria
 
             }
         }
-        private void Nr4_Click(object sender, RoutedEventArgs e)
+        private void Nr4_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod4.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod4.Visibility = Visibility.Visible;
                 nr4.Opacity = 0.4;
+                nr4_img.Opacity = 0.4;
                 prod4.Content = nr4.Content;
+                if (Convert.ToString(prod4.Content) == "szynka")
+                    szynka1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 4;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -607,7 +665,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod4.Visibility = Visibility.Collapsed;
+                szynka1.Visibility = Visibility.Hidden;
                 nr4.Opacity = 1;
+                nr4_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -617,14 +677,17 @@ namespace Pizzeria
 
             }
         }
-        private void Nr5_Click(object sender, RoutedEventArgs e)
+        private void Nr5_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod5.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod5.Visibility = Visibility.Visible;
                 nr5.Opacity = 0.4;
+                nr5_img.Opacity = 0.4;
                 prod5.Content = nr5.Content;
+                if (Convert.ToString(prod5.Content) == "cebula")
+                    cebula1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 5;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -636,7 +699,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod5.Visibility = Visibility.Collapsed;
+                cebula1.Visibility = Visibility.Hidden;
                 nr5.Opacity = 1;
+                nr5_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -645,14 +710,17 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
-        private void Nr6_Click(object sender, RoutedEventArgs e)
+        private void Nr6_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod6.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod6.Visibility = Visibility.Visible;
                 nr6.Opacity = 0.4;
+                nr6_img.Opacity = 0.4;
                 prod6.Content = nr6.Content;
+                if (Convert.ToString(prod6.Content) == "oliwki")
+                    oliwki1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 6;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -664,7 +732,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod6.Visibility = Visibility.Collapsed;
+                oliwki1.Visibility = Visibility.Hidden;
                 nr6.Opacity = 1;
+                nr6_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -673,14 +743,17 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
-        private void Nr7_Click(object sender, RoutedEventArgs e)
+        private void Nr7_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod7.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod7.Visibility = Visibility.Visible;
                 nr7.Opacity = 0.4;
+                nr7_img.Opacity = 0.4;
                 prod7.Content = nr7.Content;
+                if (Convert.ToString(prod7.Content) == "papryka")
+                    papryka1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 7;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -692,7 +765,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod7.Visibility = Visibility.Collapsed;
+                papryka1.Visibility = Visibility.Hidden;
                 nr7.Opacity = 1;
+                nr7_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -701,14 +776,17 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
-        private void Nr8_Click(object sender, RoutedEventArgs e)
+        private void Nr8_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod8.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod8.Visibility = Visibility.Visible;
                 nr8.Opacity = 0.4;
+                nr8_img.Opacity = 0.4;
                 prod8.Content = nr8.Content;
+                if (Convert.ToString(prod8.Content) == "szpinak")
+                    szpinak1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 8;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -720,7 +798,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod8.Visibility = Visibility.Collapsed;
+                szpinak1.Visibility = Visibility.Hidden;
                 nr8.Opacity = 1;
+                nr8_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -729,14 +809,17 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
-        private void Nr9_Click(object sender, RoutedEventArgs e)
+        private void Nr9_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod9.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod9.Visibility = Visibility.Visible;
                 nr9.Opacity = 0.4;
+                nr9_img.Opacity = 0.4;
                 prod9.Content = nr9.Content;
+                if (Convert.ToString(prod9.Content) == "tunczyk")
+                    tunczyk1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 10;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -748,7 +831,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod9.Visibility = Visibility.Collapsed;
+                tunczyk1.Visibility = Visibility.Hidden;
                 nr9.Opacity = 1;
+                nr9_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -757,14 +842,17 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
-        private void Nr10_Click(object sender, RoutedEventArgs e)
+        private void Nr10_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod10.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod10.Visibility = Visibility.Visible;
                 nr10.Opacity = 0.4;
+                nr10_img.Opacity = 0.4;
                 prod10.Content = nr10.Content;
+                if (Convert.ToString(prod10.Content) == "kukurydza")
+                    kukurydza1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 11;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -776,7 +864,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod10.Visibility = Visibility.Collapsed;
+                kukurydza1.Visibility = Visibility.Hidden;
                 nr10.Opacity = 1;
+                nr10_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -785,14 +875,17 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
-        private void Nr11_Click(object sender, RoutedEventArgs e)
+        private void Nr11_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod11.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod11.Visibility = Visibility.Visible;
                 nr11.Opacity = 0.4;
+                nr11_img.Opacity = 0.4;
                 prod11.Content = nr11.Content;
+                if (Convert.ToString(prod11.Content) == "kurczak")
+                    kurczak1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 12;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -804,7 +897,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod11.Visibility = Visibility.Collapsed;
+                kurczak1.Visibility = Visibility.Hidden;
                 nr11.Opacity = 1;
+                nr11_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -813,14 +908,17 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
-        private void Nr12_Click(object sender, RoutedEventArgs e)
+        private void Nr12_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod12.Visibility == Visibility.Collapsed)
             {
                 skladniki2.Height += 37;
                 prod12.Visibility = Visibility.Visible;
                 nr12.Opacity = 0.4;
+                nr12_img.Opacity = 0.4;
                 prod12.Content = nr12.Content;
+                if (Convert.ToString(prod12.Content) == "pomidor")
+                    pomidor1.Visibility = Visibility.Visible;
                 id_wyb_skladnika = 13;
                 licz_sum_skl(id_wyb_skladnika);
                 if (rozmiar_pizzy == "(duza)")
@@ -832,7 +930,9 @@ namespace Pizzeria
             {
                 skladniki2.Height -= 37;
                 prod12.Visibility = Visibility.Collapsed;
+                pomidor1.Visibility = Visibility.Hidden;
                 nr12.Opacity = 1;
+                nr12_img.Opacity = 1;
                 suma_skladnikow_d -= cena_d;
                 suma_skladnikow_sr -= cena_sr;
                 if (rozmiar_pizzy == "(duza)")
@@ -967,18 +1067,23 @@ namespace Pizzeria
             finalizacja.Visibility = Visibility.Visible;
             SQL_max_id();
             dodaj_zamowienie();
+            do_zaplaty.Content = suma1_label.Content;
+            SQLend();
         }
         public async void restart()
         {
-            await Task.Delay(3000);
+            await Task.Delay(5000);
             numerek.Visibility = Visibility.Collapsed;
             menu.Visibility = Visibility.Visible;
-            InitializeComponent();
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
+
         }
         private void Gotowka_button_Click(object sender, RoutedEventArgs e)
         {
             finalizacja.Visibility = Visibility.Collapsed;
             numerek.Visibility = Visibility.Visible;
+            Numer_zamowienia_lab.Content = max_id_zam;
             restart();
         }
 
@@ -992,6 +1097,15 @@ namespace Pizzeria
             wybor_pizzy("1");
             nazwa_wyb_pizzy = Convert.ToString(pizza_button.Content);
             Rozmiar_duza_Click(sender, e);
+            pizza_button.Opacity = 1;
+            pizza_button1.Opacity = 0.5;
+            pizza_button2.Opacity = 0.5;
+            pizza_button3.Opacity = 0.5;
+            pizza_button4.Opacity = 0.5;
+            pizza_button5.Opacity = 0.5;
+            pizza_button6.Opacity = 0.5;
+            pizza_button7.Opacity = 0.5;
+            pizza_button8.Opacity = 0.5;
         }
 
         private void Pizza_button1_Click(object sender, RoutedEventArgs e)
@@ -999,6 +1113,15 @@ namespace Pizzeria
             wybor_pizzy("2");
             nazwa_wyb_pizzy = Convert.ToString(pizza_button1.Content);
             Rozmiar_duza_Click(sender, e);
+            pizza_button.Opacity = 0.5;
+            pizza_button1.Opacity = 1;
+            pizza_button2.Opacity = 0.5;
+            pizza_button3.Opacity = 0.5;
+            pizza_button4.Opacity = 0.5;
+            pizza_button5.Opacity = 0.5;
+            pizza_button6.Opacity = 0.5;
+            pizza_button7.Opacity = 0.5;
+            pizza_button8.Opacity = 0.5;
         }
 
         private void Pizza_button2_Click(object sender, RoutedEventArgs e)
@@ -1006,6 +1129,15 @@ namespace Pizzeria
             wybor_pizzy("3");
             nazwa_wyb_pizzy = Convert.ToString(pizza_button2.Content);
             Rozmiar_duza_Click(sender, e);
+            pizza_button.Opacity = 0.5;
+            pizza_button1.Opacity = 0.5;
+            pizza_button2.Opacity = 1;
+            pizza_button3.Opacity = 0.5;
+            pizza_button4.Opacity = 0.5;
+            pizza_button5.Opacity = 0.5;
+            pizza_button6.Opacity = 0.5;
+            pizza_button7.Opacity = 0.5;
+            pizza_button8.Opacity = 0.5;
         }
 
         private void Pizza_button3_Click(object sender, RoutedEventArgs e)
@@ -1013,6 +1145,15 @@ namespace Pizzeria
             wybor_pizzy("4");
             nazwa_wyb_pizzy = Convert.ToString(pizza_button3.Content);
             Rozmiar_duza_Click(sender, e);
+            pizza_button.Opacity = 0.5;
+            pizza_button1.Opacity = 0.5;
+            pizza_button2.Opacity = 0.5;
+            pizza_button3.Opacity = 1;
+            pizza_button4.Opacity = 0.5;
+            pizza_button5.Opacity = 0.5;
+            pizza_button6.Opacity = 0.5;
+            pizza_button7.Opacity = 0.5;
+            pizza_button8.Opacity = 0.5;
         }
 
         private void Pizza_button4_Click(object sender, RoutedEventArgs e)
@@ -1020,6 +1161,15 @@ namespace Pizzeria
             wybor_pizzy("5");
             nazwa_wyb_pizzy = Convert.ToString(pizza_button4.Content);
             Rozmiar_duza_Click(sender, e);
+            pizza_button.Opacity = 0.5;
+            pizza_button1.Opacity = 0.5;
+            pizza_button2.Opacity = 0.5;
+            pizza_button3.Opacity = 0.5;
+            pizza_button4.Opacity = 1;
+            pizza_button5.Opacity = 0.5;
+            pizza_button6.Opacity = 0.5;
+            pizza_button7.Opacity = 0.5;
+            pizza_button8.Opacity = 0.5;
         }
 
         private void Pizza_button5_Click(object sender, RoutedEventArgs e)
@@ -1027,6 +1177,15 @@ namespace Pizzeria
             wybor_pizzy("6");
             nazwa_wyb_pizzy = Convert.ToString(pizza_button5.Content);
             Rozmiar_duza_Click(sender, e);
+            pizza_button.Opacity = 0.5;
+            pizza_button1.Opacity = 0.5;
+            pizza_button2.Opacity = 0.5;
+            pizza_button3.Opacity = 0.5;
+            pizza_button4.Opacity = 0.5;
+            pizza_button5.Opacity = 1;
+            pizza_button6.Opacity = 0.5;
+            pizza_button7.Opacity = 0.5;
+            pizza_button8.Opacity = 0.5;
         }
 
         private void Pizza_button6_Click(object sender, RoutedEventArgs e)
@@ -1034,6 +1193,15 @@ namespace Pizzeria
             wybor_pizzy("7");
             nazwa_wyb_pizzy = Convert.ToString(pizza_button6.Content);
             Rozmiar_duza_Click(sender, e);
+            pizza_button.Opacity = 0.5;
+            pizza_button1.Opacity = 0.5;
+            pizza_button2.Opacity = 0.5;
+            pizza_button3.Opacity = 0.5;
+            pizza_button4.Opacity = 0.5;
+            pizza_button5.Opacity = 0.5;
+            pizza_button6.Opacity = 1;
+            pizza_button7.Opacity = 0.5;
+            pizza_button8.Opacity = 0.5;
         }
 
         private void Pizza_button7_Click(object sender, RoutedEventArgs e)
@@ -1041,6 +1209,15 @@ namespace Pizzeria
             wybor_pizzy("8");
             nazwa_wyb_pizzy = Convert.ToString(pizza_button7.Content);
             Rozmiar_duza_Click(sender, e);
+            pizza_button.Opacity = 0.5;
+            pizza_button1.Opacity = 0.5;
+            pizza_button2.Opacity = 0.5;
+            pizza_button3.Opacity = 0.5;
+            pizza_button4.Opacity = 0.5;
+            pizza_button5.Opacity = 0.5;
+            pizza_button6.Opacity = 0.5;
+            pizza_button7.Opacity = 1;
+            pizza_button8.Opacity = 0.5;
         }
 
         private void Pizza_button8_Click(object sender, RoutedEventArgs e)
@@ -1048,10 +1225,21 @@ namespace Pizzeria
             wybor_pizzy("10");
             nazwa_wyb_pizzy = Convert.ToString(pizza_button8.Content);
             Rozmiar_duza_Click(sender, e);
+            pizza_button.Opacity = 0.5;
+            pizza_button1.Opacity = 0.5;
+            pizza_button2.Opacity = 0.5;
+            pizza_button3.Opacity = 0.5;
+            pizza_button4.Opacity = 0.5;
+            pizza_button5.Opacity = 0.5;
+            pizza_button6.Opacity = 0.5;
+            pizza_button7.Opacity = 0.5;
+            pizza_button8.Opacity = 1;
         }
 
         private void Rozmiar_srednia_Click(object sender, RoutedEventArgs e)
         {
+            rozmiar_srednia.Opacity = 1;
+            rozmiar_duza.Opacity = 0.5;
             rozmiar_cm.Content ="32 cm";
             rozmiar_pizzy = "(srednia)";
             if (id_wyb_pizzy == "0")
@@ -1067,6 +1255,8 @@ namespace Pizzeria
 
         private void Rozmiar_duza_Click(object sender, RoutedEventArgs e)
         {
+            rozmiar_srednia.Opacity=0.5;
+            rozmiar_duza.Opacity = 1;
             rozmiar_cm.Content ="48 cm";
             rozmiar_pizzy = "(duza)";
             if (id_wyb_pizzy == "0")
@@ -1211,6 +1401,11 @@ namespace Pizzeria
             zamowienie_lab1[9].Content = "";
             Usun_zam();
             
+        }
+
+        private void Potw_blik_button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Niepoprawny kod BLIK");
         }
 
         
