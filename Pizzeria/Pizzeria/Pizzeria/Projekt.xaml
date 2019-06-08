@@ -168,8 +168,8 @@
 
 
             <Label Content="Twoje zamówienie:" Background="#00000000" FontSize="36" Margin="385,10,-0.4,704.4" Foreground="White" FontFamily="Pristina"/>
-            <ScrollViewer Margin="385,70,10,496.8" VerticalScrollBarVisibility="Hidden" Cursor="Hand">
-                <StackPanel Height="422.4" Width="278.2">
+            <ScrollViewer x:Name="ScrollViewer1" Margin="385,70,10,496.8" VerticalScrollBarVisibility="Hidden" Cursor="Hand">
+                <StackPanel Height="422.4" Width="278.2" MouseMove="_MouseMove"   >
                     <Label x:Name="zam" Content="zamówienie1:" Background="#00000000" FontSize="24" Foreground="White" FontFamily="Pristina" Visibility="Hidden"/>
                     <Button x:Name="del_zam1_button" Content="Button" HorizontalAlignment="Right" Height="24.159" Margin="0,-32,8,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="25" Visibility="Hidden" Click="Del_zam1_button_Click">
                         <Button.Effect>
@@ -793,18 +793,18 @@
                 <StackPanel.Effect>
                     <DropShadowEffect Color="#FFDFDFDF" BlurRadius="10" RenderingBias="Quality" ShadowDepth="8"/>
                 </StackPanel.Effect>
-                <Label x:Name="prod1" Content="1" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
-                <Label x:Name="prod2" Content="2" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
-                <Label x:Name="prod3" Content="3" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
-                <Label x:Name="prod4" Content="4" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
-                <Label x:Name="prod5" Content="5" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
-                <Label x:Name="prod6" Content="6" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
-                <Label x:Name="prod7" Content="7" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
-                <Label x:Name="prod8" Content="8" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
-                <Label x:Name="prod9" Content="9" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
-                <Label x:Name="prod10" Content="10" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
-                <Label x:Name="prod11" Content="11" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
-                <Label x:Name="prod12" Content="12" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod1" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod2" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod3" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod4" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod5" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod6" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod7" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod8" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod9" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod10" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod11" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
+                <Label x:Name="prod12" HorizontalAlignment="Center" Height="30" Margin="0,5,0,0" Width="200" Background="#FFD0C8E6" VerticalAlignment="Top" Visibility="Collapsed"/>
             </StackPanel>
 
             <Grid x:Name="Cena_kreator"  Width="220" Height="80" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,449,0,0">
@@ -891,8 +891,8 @@
 
 
             <Label Content="Twoje zamówienie:" Background="#00000000" FontSize="36" Margin="22.6,10,362,704.4" Foreground="White" FontFamily="Pristina"/>
-            <ScrollViewer Margin="73.2,75,23,401.8" VerticalScrollBarVisibility="Hidden" Cursor="Hand">
-                <StackPanel Height="591.2" Width="550" RenderTransformOrigin="0.323,0.514">
+            <ScrollViewer x:Name="ScrollViewer2" Margin="73.2,75,23,401.8" VerticalScrollBarVisibility="Hidden" Cursor="Hand">
+                <StackPanel x:Name="sp2" Height="591.2" Width="550" RenderTransformOrigin="0.323,0.514" MouseMove="_MouseMove">
                     <Label x:Name="zam11" Content="zamówienie1:" Background="#00000000" FontSize="36" Foreground="White" FontFamily="Pristina" Visibility="Hidden"/>
                     <Button x:Name="del_zam11_button" Content="Button" HorizontalAlignment="Right" Height="33.441" Margin="0,-47.9,20,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="34.605" Click="Del_zam1_button_Click" Visibility="Hidden">
                         <Button.Effect>

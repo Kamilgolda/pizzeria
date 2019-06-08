@@ -17,45 +17,99 @@ using System.Data.SqlClient;
 namespace Pizzeria
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+/// Logika interakcji dla klasy MainWindow.xaml
     /// </summary>
     public partial class Projekt : Window
     {
 
-        //zmienne
+        /// <summary>
+        /// Przechowuje dane w celu przewijania listy składników w kreatorze
+        /// </summary>
         int licznik = 1; //do kreatora
+        /// <summary>
+        /// Przechowuje nazwę ostatnio wybranej pizzy
+        /// </summary>
         string nazwa_wyb_pizzy; //przypisanie nazwy wybranej pizzy
-        string id_wyb_pizzy="0"; //przypisanie id wybranej pizzy
+        /// <summary>
+        /// Przechowuje ID ostatnio wybranej pizzy
+        /// </summary>
+        string id_wyb_pizzy = "0"; //przypisanie id wybranej pizzy
+        /// <summary>
+        /// Przechowuje ID ostatnio wybranego skladnika
+        /// </summary>
         int id_wyb_skladnika = 0; //przypisanie id wybranemu skladnikowi
+        /// <summary>
+        /// Przechowuje rozmiar wybranej pizzy
+        /// </summary>
         string rozmiar_pizzy = "0"; // przypisanie rozmiaru pizzy
+        /// <summary>
+        /// Przechowuje cenę skladnika dla sredniej pizzy
+        /// </summary>
         int cena_sr = 0; // cena aktualnego skladnika dla sredniej pizzy
+        /// <summary>
+        /// Przechowuje cenę skladnika dla dużej pizzy
+        /// </summary>
         int cena_d = 0; // cena aktualnego skladnika dla duzej pizzy
+        /// <summary>
+        /// Przechowuje sumę kosztów zamówienia
+        /// </summary>
         int suma_zam = 0; //przypisanie sumy kosztow zamowienia
+        /// <summary>
+        /// Przechowuje sumę cen skladników sredniej pizzy wraz z ceną sredniej pizzy bez składników
+        /// </summary>
         int suma_skladnikow_sr = 8; //suma cen skladnikow + cena startowa dla sr pizzy
+        /// <summary>
+        /// Przechowuje sumę cen skladników duzej pizzy wraz z ceną dużej pizzy bez składników
+        /// </summary>
         int suma_skladnikow_d = 10; //suma cen skladnikow + cena startowa dla duzej pizzy
+        /// <summary>
+        /// Przechowuje numer ID zamówienia które jest realizowane
+        /// </summary>
         int max_id_zam = 0; //maksymalne id zapisanych w bazie zamowien
-        string[,]zamowienia = new string[10,15]; //tablica parametrow zamowienia
+        /// <summary>
+        /// Tablica przechowująca dane zamówień.
+        /// </summary>
+        string[,] zamowienia = new string[10, 15]; //tablica parametrow zamowienia
+        /// <summary>
+        /// Tablica z nazwami zamówień dla grida 'menu'
+        /// </summary>
         Label[] zamowienie_lab = new Label[10]; //tablica nazw zamowien dla menu
+        /// <summary>
+        /// Tablica z nazwami zamówień dla grida 'zamowienie'
+        /// </summary>
         Label[] zamowienie_lab1 = new Label[10];//tablica nazw zamowien dla zamow
+        /// <summary>
+        /// Tablica z buttonami usuniecia zamówień dla grida 'menu'
+        /// </summary>
         Button[] delzam = new Button[10];//tablica buttonow usuniecia dla menu
+        /// <summary>
+        /// Tablica z buttonami usuniecia zamówień dla grida 'zamow'
+        /// </summary>
         Button[] delzam1 = new Button[10];// tablica buttonow usuniecia dla zamow
-        SqlConnection polacz;// obiekt polaczenia z baza danych
-
+        SqlConnection polacz;// pole do polaczenia z baza danych
+        /// <summary>
+        /// Objekt na potrzeby scrollowania list zamowien za pomoca LeftMouseButton
+        /// </summary>
+        Point oldMousePosition = new Point();
+        /// <summary>
+        /// Konstruktor klasy Projekt
+        /// </summary>
         public Projekt()
         {
             InitializeComponent();
             SQLopen(); // otworz polaczenie z baza danych
-            tworz_tablice();
-
-
-
+            tworz_tablice(); // tworzy tablice elementow
         }
 
         //SQL
-
+        /// <summary>
+        /// Otwiera połączenie z bazą danych
+        /// </summary>
         public void SQLopen() // otworz polaczenie z baza danych
         {
             string connetionString = "Data Source=60087.database.windows.net;Initial Catalog=pizzeria;User ID=w60087;Password=zaq1@WSX";
+            // "Data Source=DESKTOP-O745A5P\\SQLEXPRESS;Initial Catalog=pizzeria;User ID=klient;Password=klient" - lokalna baza
+            // "Data Source=60087.database.windows.net;Initial Catalog=pizzeria;User ID=w60087;Password=zaq1@WSX" - baza na azure
             SqlConnection polaczenie;
             polaczenie = new SqlConnection(connetionString);
             try
@@ -68,6 +122,15 @@ namespace Pizzeria
             }
             polacz = polaczenie;
         }
+        /// <summary>
+        /// Przypisuje contenty pola wedlug zapytania SQL i numeru komórki
+        /// </summary>
+            /// <param name ="pole">obiekt Label
+            /// </param>
+            /// <param name ="sql">treść zapytania SQL
+            /// </param>
+            /// <param name ="wartosc">numer komórki która będzie przypisana poczawszy od 0
+            /// </param>
         public void SQL_label(Label pole, string sql, int wartosc) //przypisanie Contentowi labela (pole), tekstu komorki (kolejnosc komorek wedlug wartosc) wedlug zapytania sql 
         {
             SqlCommand odczyt;
@@ -77,11 +140,8 @@ namespace Pizzeria
             {
                 odczyt = new SqlCommand(sql, polacz);
                 dataReader = odczyt.ExecuteReader();
-                // while (dataReader.Read())
-                // {
                 dataReader.Read();
                 pole.Content = Convert.ToString(dataReader.GetValue(wartosc));
-                // }
                 dataReader.Close();
                 odczyt.Dispose();
             }
@@ -90,6 +150,9 @@ namespace Pizzeria
                 MessageBox.Show("Niepoprawna składnia");
             }
         }
+        /// <summary>
+        /// Dodaje zamówienie do bazy danych
+        /// </summary>
         public void dodaj_zamowienie()//dodanie wszystkich zamowien jako jedno.
         {
             SqlCommand odczyt;
@@ -105,21 +168,17 @@ namespace Pizzeria
                     odczyt.Dispose();
                     dataReader.Close();
                 }
-                
-
-                // while (dataReader.Read())
-                // {
-                //  dataReader.Read();
-                //pole.Content = Convert.ToString(dataReader.GetValue(wartosc));
-                // }
-
-
             }
             catch
             {
                 MessageBox.Show("Niepoprawna składnia");
             }
         }
+        /// <summary>
+        /// Przypisuje contentom tablicy buttonów tab_pizz[] nazwy pizz z bazy danych
+        /// </summary>
+        /// <param name ="sql">treść zapytania SQL
+        /// </param>
         public void SQL_buttony_z_nazwami(string sql)// przypisanie contentow buttonom w menu z wyborem pizzy
         {
             SqlCommand odczyt;
@@ -158,12 +217,17 @@ namespace Pizzeria
                 MessageBox.Show("Niepoprawna składnia");
             }
         }
+        /// <summary>
+        /// Zakańcza połączenie z bazą danych
+        /// </summary>
         public void SQLend()// zakonczenie polaczenia z baza danych
         {
             polacz.Close();
         }
-
-        private void wybor_pizzy(string id)//przypisanie contentow labelom skladnikow w menu wyboru pizzy
+        /// <summary>
+        /// Przypisuje contentom tablicy labeli lab_pizz[] nazwy skladnikow z bazy danych, wyswietla liste i obrazki skladnikow
+        /// </summary>
+        private void wybor_pizzy(string id)
         {
             zl_wyb.Visibility = Visibility.Hidden;
             kwota_kr.Content = "";
@@ -199,6 +263,7 @@ namespace Pizzeria
                 kukurydza.Visibility = Visibility.Hidden;
                 kurczak.Visibility = Visibility.Hidden;
                 pomidor.Visibility = Visibility.Hidden;
+                
                 for (int i = 0; i < 9; i++)
                 {
                     lab_pizz[i].Content = "";
@@ -250,7 +315,10 @@ namespace Pizzeria
             }
 
         }
-        public void SQL_max_id() //przypisanie Contentowi labela (pole), tekstu komorki (kolejnosc komorek wedlug wartosc) wedlug zapytania sql 
+        /// <summary>
+        /// Przypisuje dla max_id_zam ID poprzedniego zamówienia pobrane z bazy
+        /// </summary>
+        public void SQL_max_id()
         {
             SqlCommand odczyt;
             SqlDataReader dataReader;
@@ -259,11 +327,8 @@ namespace Pizzeria
             {
                 odczyt = new SqlCommand(sql, polacz);
                 dataReader = odczyt.ExecuteReader();
-                // while (dataReader.Read())
-                // {
                 dataReader.Read();
                 max_id_zam= Convert.ToInt32(dataReader.GetValue(0));
-                // }
                 dataReader.Close();
                 odczyt.Dispose();
             }
@@ -274,6 +339,9 @@ namespace Pizzeria
         }
         //inne funkcje
 
+        /// <summary>
+        /// zastepuje usuniete zamowienie kolejnymi i zmienia kwotę do zapłaty
+        /// </summary>
         private void Usun_zam()
         {
             for (int i = 0; i < 9; i++)
@@ -299,15 +367,18 @@ namespace Pizzeria
                     delzam[i].Visibility = Visibility.Hidden;
                     delzam1[i].Visibility = Visibility.Hidden;
                 }
-                // break;*/
             }
             suma_label.Content = suma_zam + "zl";
             suma1_label.Content = suma_zam + "zl";
 
         }
+        /// <summary>
+        /// Przypisuje elementom tablic odpowiadające im kontrolki
+        /// </summary>
         private void tworz_tablice()
         {
-            zamowienie_lab[0] = zam;
+
+                zamowienie_lab[0] = zam;
             zamowienie_lab[1] = zam1;
             zamowienie_lab[2] = zam2;
             zamowienie_lab[3] = zam3;
@@ -354,6 +425,12 @@ namespace Pizzeria
         }
 
         //kreator
+
+        /// <summary>
+        /// Przypisuje contentom tablicy buttonów tab_skladnikow[] nazwy skladnikow z bazy danych
+        /// </summary>
+        /// <param name = "sql" > treść zapytania SQL
+        /// </param>
         public void SQL_buttony_z_nazwami_kreator(string sql)// przypisanie contentow buttonom w menu z wyborem pizzy
         {
             SqlCommand odczyt;
@@ -396,8 +473,10 @@ namespace Pizzeria
                 MessageBox.Show("Niepoprawna składnia");
             }
         }
-
-            private void Dalej(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Przewija listę ze skladnikami do przodu
+        /// </summary>
+        private void Dalej(object sender, RoutedEventArgs e)
         {
             licznik++;
             if (licznik == 0)
@@ -443,7 +522,9 @@ namespace Pizzeria
             
             }
         }
-
+        /// <summary>
+        /// Przewija listę ze skladnikami wstecz
+        /// </summary>
         private void Wstecz(object sender, RoutedEventArgs e)
         {
             licznik--;
@@ -485,7 +566,9 @@ namespace Pizzeria
             }
             
         }
-
+        /// <summary>
+        /// Ustawia contenty,zmienia ceny skladnikow dla sredniej pizzy oraz podswietla wybrany rozmiar dla okna kreatora  
+        /// </summary>
         private void Rozmiar_srednia2_Click(object sender, RoutedEventArgs e)
         {
             rozmiar_cm2.Content ="32cm";
@@ -494,6 +577,9 @@ namespace Pizzeria
             rozmiar_srednia2.Opacity = 1;
             rozmiar_duza2.Opacity = 0.5;
         }
+        /// <summary>
+        /// Ustawia contenty,zmienia ceny skladnikow dla duzej pizzy oraz podswietla wybrany rozmiar  dla okna kreatora
+        /// </summary>
         private void Rozmiar_duza2_Click(object sender, RoutedEventArgs e)
         {
             rozmiar_cm2.Content ="48cm";
@@ -504,6 +590,11 @@ namespace Pizzeria
 
 
         }
+        /// <summary>
+        /// Dodaje do sumy cenę wybranego skladnika
+        /// </summary>
+        /// <param name = "id_skladnika" > ID skladnika
+        /// </param>
         private void licz_sum_skl(int id_skladnika)
         {
             
@@ -514,14 +605,11 @@ namespace Pizzeria
                 {
                     odczyt = new SqlCommand(sql, polacz);
                     dataReader = odczyt.ExecuteReader();
-                    // while (dataReader.Read())
-                    // {
                     dataReader.Read();
                     cena_sr= Convert.ToInt32(dataReader.GetValue(0));
                     cena_d = Convert.ToInt32(dataReader.GetValue(1));
                 suma_skladnikow_sr += cena_sr;
                 suma_skladnikow_d += cena_d;
-                // }
                 dataReader.Close();
                     odczyt.Dispose();
                 }
@@ -529,19 +617,13 @@ namespace Pizzeria
                 {
                     MessageBox.Show("Niepoprawna składnia");
                 }
-            
-            //  SQL_label(kwota_skl, "Select Cena_sr, Cena_d from skladniki where IDskladniku =" + id_wyb_skladnika + "", 1);
-            //  zl_wyb2.Visibility = Visibility.Visible;
-
         }
 
+        //menu wyboru skladnikow (pokazanie wartosci )
 
-
-
-        //menu wyboru skladnikow {pokazanie wartosci )
-
-
-           
+        /// <summary>
+        /// Wybor skladnika o ID=1
+        /// </summary>     
         private void Nr1_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod1.Visibility == Visibility.Collapsed)
@@ -576,6 +658,9 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
+        /// <summary>
+        /// Wybor skladnika o ID=2
+        /// </summary> 
         private void Nr2_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod2.Visibility == Visibility.Collapsed)
@@ -609,6 +694,9 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
+        /// <summary>
+        /// Wybor skladnika o ID=3
+        /// </summary> 
         private void Nr3_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod3.Visibility == Visibility.Collapsed)
@@ -643,6 +731,9 @@ namespace Pizzeria
 
             }
         }
+        /// <summary>
+        /// Wybor skladnika o ID=4
+        /// </summary> 
         private void Nr4_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod4.Visibility == Visibility.Collapsed)
@@ -677,6 +768,9 @@ namespace Pizzeria
 
             }
         }
+        /// <summary>
+        /// Wybor skladnika o ID=5
+        /// </summary> 
         private void Nr5_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod5.Visibility == Visibility.Collapsed)
@@ -710,6 +804,9 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
+        /// <summary>
+        /// Wybor skladnika o ID=6
+        /// </summary> 
         private void Nr6_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod6.Visibility == Visibility.Collapsed)
@@ -743,6 +840,9 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
+        /// <summary>
+        /// Wybor skladnika o ID=7
+        /// </summary> 
         private void Nr7_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod7.Visibility == Visibility.Collapsed)
@@ -776,6 +876,9 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
+        /// <summary>
+        /// Wybor skladnika o ID=8
+        /// </summary> 
         private void Nr8_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod8.Visibility == Visibility.Collapsed)
@@ -809,6 +912,9 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
+        /// <summary>
+        /// Wybor skladnika o ID=10
+        /// </summary> 
         private void Nr9_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod9.Visibility == Visibility.Collapsed)
@@ -842,6 +948,9 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
+        /// <summary>
+        /// Wybor skladnika o ID=11
+        /// </summary> 
         private void Nr10_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod10.Visibility == Visibility.Collapsed)
@@ -875,6 +984,9 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
+        /// <summary>
+        /// Wybor skladnika o ID=12
+        /// </summary> 
         private void Nr11_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod11.Visibility == Visibility.Collapsed)
@@ -908,6 +1020,9 @@ namespace Pizzeria
                     kwota_skl.Content = suma_skladnikow_sr;
             }
         }
+        /// <summary>
+        /// Wybor skladnika o ID=13
+        /// </summary> 
         private void Nr12_g_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             if (prod12.Visibility == Visibility.Collapsed)
@@ -942,9 +1057,11 @@ namespace Pizzeria
             }
         }
 
-
         //buttony
 
+        /// <summary>
+        /// Przechodzi do menu wyboru pizzy
+        /// </summary> 
         private void Wybierz_Pizze_button_Click(object sender, RoutedEventArgs e)
         {
             menu.Visibility = Visibility.Collapsed;
@@ -953,7 +1070,9 @@ namespace Pizzeria
             
             wybor.Visibility = Visibility.Visible;  
         }
-
+        /// <summary>
+        /// Przechodzi do menu kreatora pizzy
+        /// </summary> 
         private void kompozycja_Click_1(object sender, RoutedEventArgs e)
         {
             menu.Visibility = Visibility.Collapsed;
@@ -962,29 +1081,25 @@ namespace Pizzeria
             rozmiar_pizzy = "(duza)";
                 kwota_skl.Content = suma_skladnikow_d;
         }
-
+        /// <summary>
+        /// Przechodzi do menu zamowienia
+        /// </summary> 
         private void zamow_Click_2(object sender, RoutedEventArgs e)
         {
             menu.Visibility = Visibility.Collapsed;
             zamowienie.Visibility = Visibility.Visible;
-         /*   zam11.Content = zam.Content;
-            zam12.Content = zam1.Content;
-            zam13.Content = zam2.Content;
-            zam14.Content = zam3.Content;
-            zam15.Content = zam4.Content;
-            zam16.Content = zam5.Content;
-            zam17.Content = zam6.Content;
-            zam18.Content = zam7.Content;
-            zam19.Content = zam8.Content;
-            zam110.Content = zam9.Content;*/
         }
-
+        /// <summary>
+        /// Przechodzi do menu glownego
+        /// </summary> 
         private void Anuluj_button_Click(object sender, RoutedEventArgs e)
         {
             wybor.Visibility = Visibility.Collapsed;
             menu.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Dodaje zamowienia z menu wyboru pizzy do listy w menu glownym i zamowienia i przechodzi do menu glownego
+        /// </summary> 
         private void Dodaj_zamowienie_button_Click(object sender, RoutedEventArgs e)
         {
             for (int i=0;i<10;i++)
@@ -1010,13 +1125,17 @@ namespace Pizzeria
             wybor.Visibility = Visibility.Collapsed;
             menu.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Przechodzi do menu glownego
+        /// </summary> 
         private void Anuluj_button1_Click(object sender, RoutedEventArgs e)
         {
             kreator.Visibility = Visibility.Collapsed;
             menu.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Dodaje zamowienie z kreatora pizz do listy w menu glownym i zamowienia i przechodzi do menu glownego
+        /// </summary> 
         private void Dodaj_zamowienie_button_Click_1(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < 10; i++)
@@ -1054,13 +1173,17 @@ namespace Pizzeria
             kreator.Visibility = Visibility.Collapsed;
             menu.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Przechodzi do menu glownego
+        /// </summary> 
         private void Anuluj_button2_Click(object sender, RoutedEventArgs e)
         {
             zamowienie.Visibility = Visibility.Collapsed;
             menu.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Dodaje nowe zamówienie do bazy i przypisuje mu ID
+        /// </summary> 
         private void Zamow_button_Click(object sender, RoutedEventArgs e)
         {
             zamowienie.Visibility = Visibility.Collapsed;
@@ -1070,6 +1193,9 @@ namespace Pizzeria
             do_zaplaty.Content = suma1_label.Content;
             SQLend();
         }
+        /// <summary>
+        /// Restartuje program
+        /// </summary> 
         public async void restart()
         {
             await Task.Delay(5000);
@@ -1079,6 +1205,9 @@ namespace Pizzeria
             Application.Current.Shutdown();
 
         }
+        /// <summary>
+        /// Przechodzi do okna 'numerek', wyswietla numer zamowienia, restartuje program
+        /// </summary> 
         private void Gotowka_button_Click(object sender, RoutedEventArgs e)
         {
             finalizacja.Visibility = Visibility.Collapsed;
@@ -1086,12 +1215,16 @@ namespace Pizzeria
             Numer_zamowienia_lab.Content = max_id_zam;
             restart();
         }
-
+        /// <summary>
+        /// Wyświetla pole do wpisania kodu blik
+        /// </summary> 
         private void Blik_button_Click(object sender, RoutedEventArgs e)
         {
             blik_grid.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Wybiera pizze od id=1 i podswietla wybór
+        /// </summary> 
         private void Pizza_button_Click(object sender, RoutedEventArgs e)
         {
             wybor_pizzy("1");
@@ -1107,7 +1240,9 @@ namespace Pizzeria
             pizza_button7.Opacity = 0.5;
             pizza_button8.Opacity = 0.5;
         }
-
+        /// <summary>
+        /// Wybiera pizze od id=2 i podswietla wybór
+        /// </summary> 
         private void Pizza_button1_Click(object sender, RoutedEventArgs e)
         {
             wybor_pizzy("2");
@@ -1123,7 +1258,9 @@ namespace Pizzeria
             pizza_button7.Opacity = 0.5;
             pizza_button8.Opacity = 0.5;
         }
-
+        /// <summary>
+        /// Wybiera pizze od id=3 i podswietla wybór
+        /// </summary> 
         private void Pizza_button2_Click(object sender, RoutedEventArgs e)
         {
             wybor_pizzy("3");
@@ -1139,7 +1276,9 @@ namespace Pizzeria
             pizza_button7.Opacity = 0.5;
             pizza_button8.Opacity = 0.5;
         }
-
+        /// <summary>
+        /// Wybiera pizze od id=4 i podswietla wybór
+        /// </summary> 
         private void Pizza_button3_Click(object sender, RoutedEventArgs e)
         {
             wybor_pizzy("4");
@@ -1155,7 +1294,9 @@ namespace Pizzeria
             pizza_button7.Opacity = 0.5;
             pizza_button8.Opacity = 0.5;
         }
-
+        /// <summary>
+        /// Wybiera pizze od id=5 i podswietla wybór
+        /// </summary> 
         private void Pizza_button4_Click(object sender, RoutedEventArgs e)
         {
             wybor_pizzy("5");
@@ -1171,7 +1312,9 @@ namespace Pizzeria
             pizza_button7.Opacity = 0.5;
             pizza_button8.Opacity = 0.5;
         }
-
+        /// <summary>
+        /// Wybiera pizze od id=6 i podswietla wybór
+        /// </summary> 
         private void Pizza_button5_Click(object sender, RoutedEventArgs e)
         {
             wybor_pizzy("6");
@@ -1187,7 +1330,9 @@ namespace Pizzeria
             pizza_button7.Opacity = 0.5;
             pizza_button8.Opacity = 0.5;
         }
-
+        /// <summary>
+        /// Wybiera pizze od id=7 i podswietla wybór
+        /// </summary> 
         private void Pizza_button6_Click(object sender, RoutedEventArgs e)
         {
             wybor_pizzy("7");
@@ -1203,7 +1348,9 @@ namespace Pizzeria
             pizza_button7.Opacity = 0.5;
             pizza_button8.Opacity = 0.5;
         }
-
+        /// <summary>
+        /// Wybiera pizze od id=8 i podswietla wybór
+        /// </summary> 
         private void Pizza_button7_Click(object sender, RoutedEventArgs e)
         {
             wybor_pizzy("8");
@@ -1219,7 +1366,9 @@ namespace Pizzeria
             pizza_button7.Opacity = 1;
             pizza_button8.Opacity = 0.5;
         }
-
+        /// <summary>
+        /// Wybiera pizze od id=10 i podswietla wybór
+        /// </summary> 
         private void Pizza_button8_Click(object sender, RoutedEventArgs e)
         {
             wybor_pizzy("10");
@@ -1235,7 +1384,9 @@ namespace Pizzeria
             pizza_button7.Opacity = 0.5;
             pizza_button8.Opacity = 1;
         }
-
+        /// <summary>
+        /// Ustawia contenty,zmienia ceny skladnikow dla sredniej pizzy oraz podswietla wybrany rozmiar dla okna wyboru pizzy  
+        /// </summary>
         private void Rozmiar_srednia_Click(object sender, RoutedEventArgs e)
         {
             rozmiar_srednia.Opacity = 1;
@@ -1252,7 +1403,9 @@ namespace Pizzeria
                 zl_wyb.Visibility = Visibility.Visible;
             }
         }
-
+        /// <summary>
+        /// Ustawia contenty,zmienia ceny skladnikow dla dużej pizzy oraz podswietla wybrany rozmiar dla okna wyboru pizzy  
+        /// </summary>
         private void Rozmiar_duza_Click(object sender, RoutedEventArgs e)
         {
             rozmiar_srednia.Opacity=0.5;
@@ -1269,7 +1422,9 @@ namespace Pizzeria
                 zl_wyb.Visibility = Visibility.Visible;
             }
         }
-
+        /// <summary>
+        /// Usuwa pierwsze zamówienie z listy zamówień
+        /// </summary>
         private void Del_zam1_button_Click(object sender, RoutedEventArgs e)
         {
             del_zam1_button.Visibility = Visibility.Hidden;
@@ -1281,10 +1436,10 @@ namespace Pizzeria
             zamowienie_lab[0].Content = "";
             zamowienie_lab1[0].Content = "";
             Usun_zam();
-
-
-           // suma_label.Content = suma_zam+"zl";
         }
+        /// <summary>
+        /// Usuwa drugie zamówienie z listy zamówień
+        /// </summary>
         private void Del_zam2_button_Click(object sender, RoutedEventArgs e)
         {
             del_zam2_button.Visibility = Visibility.Hidden;
@@ -1296,8 +1451,10 @@ namespace Pizzeria
             zamowienie_lab[1].Content = "";
             zamowienie_lab1[1].Content = "";
             Usun_zam();
-          //  suma_label.Content = suma_zam + "zl";
         }
+        /// <summary>
+        /// Usuwa trzecie zamówienie z listy zamówień
+        /// </summary>
         private void Del_zam3_button_Click(object sender, RoutedEventArgs e)
         {
             del_zam3_button.Visibility = Visibility.Hidden;
@@ -1309,8 +1466,10 @@ namespace Pizzeria
             zamowienie_lab[2].Content = "";
             zamowienie_lab1[2].Content = "";
             Usun_zam();
-          //  suma_label.Content = suma_zam + "zl";
         }
+        /// <summary>
+        /// Usuwa czwarte zamówienie z listy zamówień
+        /// </summary>
         private void Del_zam4_button_Click(object sender, RoutedEventArgs e)
         {
             del_zam4_button.Visibility = Visibility.Hidden;
@@ -1322,8 +1481,10 @@ namespace Pizzeria
             zamowienie_lab[3].Content = "";
             zamowienie_lab1[3].Content = "";
             Usun_zam();
-           // suma_label.Content = suma_zam + "zl";
         }
+        /// <summary>
+        /// Usuwa piąte zamówienie z listy zamówień
+        /// </summary>
         private void Del_zam5_button_Click(object sender, RoutedEventArgs e)
         {
             del_zam5_button.Visibility = Visibility.Hidden;
@@ -1335,8 +1496,10 @@ namespace Pizzeria
             zamowienie_lab[4].Content = "";
             zamowienie_lab1[4].Content = "";
             Usun_zam();
-           // suma_label.Content = suma_zam + "zl";
         }
+        /// <summary>
+        /// Usuwa szóste zamówienie z listy zamówień
+        /// </summary>
         private void Del_zam6_button_Click(object sender, RoutedEventArgs e)
         {
             del_zam6_button.Visibility = Visibility.Hidden;
@@ -1348,8 +1511,10 @@ namespace Pizzeria
             zamowienie_lab[5].Content = "";
             zamowienie_lab1[5].Content = "";
             Usun_zam();
-           // suma_label.Content = suma_zam + "zl";
         }
+        /// <summary>
+        /// Usuwa siódme zamówienie z listy zamówień
+        /// </summary>
         private void Del_zam7_button_Click(object sender, RoutedEventArgs e)
         {
             del_zam7_button.Visibility = Visibility.Hidden;
@@ -1361,8 +1526,10 @@ namespace Pizzeria
             zamowienie_lab[6].Content = "";
             zamowienie_lab1[6].Content = "";
             Usun_zam();
-           // suma_label.Content = suma_zam + "zl";
         }
+        /// <summary>
+        /// Usuwa ósme zamówienie z listy zamówień
+        /// </summary>
         private void Del_zam8_button_Click(object sender, RoutedEventArgs e)
         {
             del_zam8_button.Visibility = Visibility.Hidden;
@@ -1374,8 +1541,10 @@ namespace Pizzeria
             zamowienie_lab[7].Content = "";
             zamowienie_lab1[7].Content = "";
             Usun_zam();
-           // suma_label.Content = suma_zam + "zl";
         }
+        /// <summary>
+        /// Usuwa dziewiąte zamówienie z listy zamówień
+        /// </summary>
         private void Del_zam9_button_Click(object sender, RoutedEventArgs e)
         {
             del_zam9_button.Visibility = Visibility.Hidden;
@@ -1387,8 +1556,10 @@ namespace Pizzeria
             zamowienie_lab[8].Content = "";
             zamowienie_lab1[8].Content = "";
             Usun_zam();
-           // suma_label.Content = suma_zam + "zl";
         }
+        /// <summary>
+        /// Usuwa dziesiąte zamówienie z listy zamówień
+        /// </summary>
         private void Del_zam10_button_Click(object sender, RoutedEventArgs e)
         {
             del_zam10_button.Visibility = Visibility.Hidden;
@@ -1402,12 +1573,35 @@ namespace Pizzeria
             Usun_zam();
             
         }
-
+        /// <summary>
+        /// Wyświetla MessageBox o niepoprawnym kodzie BLIK
+        /// </summary>
         private void Potw_blik_button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Niepoprawny kod BLIK");
         }
-
-        
+        /// <summary>
+        /// Umożliwia scrollowanie list zamówień za pomocą LeftMouseButton
+        /// </summary>
+        private void _MouseMove(object sender, MouseEventArgs e)
+        {
+            Point newMousePosition = Mouse.GetPosition((StackPanel)sender);
+            ScrollViewer ScrollViewerk = new ScrollViewer();
+            if (zamowienie.Visibility==Visibility.Visible)
+                ScrollViewerk = ScrollViewer2;
+            else
+                ScrollViewerk = ScrollViewer1;
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+            {
+                if (newMousePosition.Y < oldMousePosition.Y)
+                    ScrollViewerk.ScrollToVerticalOffset(ScrollViewerk.VerticalOffset + 1);
+                if (newMousePosition.Y > oldMousePosition.Y)
+                    ScrollViewerk.ScrollToVerticalOffset(ScrollViewerk.VerticalOffset - 1);
+            }
+            else
+            {
+                oldMousePosition = newMousePosition;
+            }
+        }
     }
 }

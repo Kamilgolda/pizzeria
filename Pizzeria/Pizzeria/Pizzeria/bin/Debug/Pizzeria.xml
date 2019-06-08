@@ -1,0 +1,493 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pizzeria</name>
+    </assembly>
+    <members>
+        <member name="T:Pizzeria.App">
+            <summary>
+            Logika interakcji dla klasy App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Pizzeria.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Pizzeria.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Pizzeria.nr1">
+            <summary>
+            Logika interakcji dla klasy nr1.xaml
+            </summary>
+            <summary>
+            nr1
+            </summary>
+        </member>
+        <member name="M:Pizzeria.nr1.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pizzeria.nr1Control">
+            <summary>
+            Logika interakcji dla klasy nr1Control.xaml
+            </summary>
+            <summary>
+            nr1Control
+            </summary>
+        </member>
+        <member name="M:Pizzeria.nr1Control.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pizzeria.Projekt">
+            <summary>
+            Logika interakcji dla klasy MainWindow.xaml
+            </summary>
+            <summary>
+            Projekt
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.licznik">
+            <summary>
+            Przechowuje dane w celu przewijania listy składników w kreatorze
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.nazwa_wyb_pizzy">
+            <summary>
+            Przechowuje nazwę ostatnio wybranej pizzy
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.id_wyb_pizzy">
+            <summary>
+            Przechowuje ID ostatnio wybranej pizzy
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.id_wyb_skladnika">
+            <summary>
+            Przechowuje ID ostatnio wybranego skladnika
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.rozmiar_pizzy">
+            <summary>
+            Przechowuje rozmiar wybranej pizzy
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.cena_sr">
+            <summary>
+            Przechowuje cenę skladnika dla sredniej pizzy
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.cena_d">
+            <summary>
+            Przechowuje cenę skladnika dla dużej pizzy
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.suma_zam">
+            <summary>
+            Przechowuje sumę kosztów zamówienia
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.suma_skladnikow_sr">
+            <summary>
+            Przechowuje sumę cen skladników sredniej pizzy wraz z ceną sredniej pizzy bez składników
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.suma_skladnikow_d">
+            <summary>
+            Przechowuje sumę cen skladników duzej pizzy wraz z ceną dużej pizzy bez składników
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.max_id_zam">
+            <summary>
+            Przechowuje numer ID zamówienia które jest realizowane
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.zamowienia">
+            <summary>
+            Tablica przechowująca dane zamówień.
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.zamowienie_lab">
+            <summary>
+            Tablica z nazwami zamówień dla grida 'menu'
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.zamowienie_lab1">
+            <summary>
+            Tablica z nazwami zamówień dla grida 'zamowienie'
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.delzam">
+            <summary>
+            Tablica z buttonami usuniecia zamówień dla grida 'menu'
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.delzam1">
+            <summary>
+            Tablica z buttonami usuniecia zamówień dla grida 'zamow'
+            </summary>
+        </member>
+        <member name="F:Pizzeria.Projekt.oldMousePosition">
+            <summary>
+            Objekt na potrzeby scrollowania list zamowien za pomoca LeftMouseButton
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.#ctor">
+            <summary>
+            Konstruktor klasy Projekt
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.SQLopen">
+            <summary>
+            Otwiera połączenie z bazą danych
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.SQL_label(System.Windows.Controls.Label,System.String,System.Int32)">
+            <summary>
+            Przypisuje contenty pola wedlug zapytania SQL i numeru komórki
+            </summary>
+            <param name ="pole">obiekt Label
+            </param>
+            <param name ="sql">treść zapytania SQL
+            </param>
+            <param name ="wartosc">numer komórki która będzie przypisana poczawszy od 0
+            </param>
+        </member>
+        <member name="M:Pizzeria.Projekt.dodaj_zamowienie">
+            <summary>
+            Dodaje zamówienie do bazy danych
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.SQL_buttony_z_nazwami(System.String)">
+            <summary>
+            Przypisuje contentom tablicy buttonów tab_pizz[] nazwy pizz z bazy danych
+            </summary>
+            <param name ="sql">treść zapytania SQL
+            </param>
+        </member>
+        <member name="M:Pizzeria.Projekt.SQLend">
+            <summary>
+            Zakańcza połączenie z bazą danych
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.wybor_pizzy(System.String)">
+            <summary>
+            Przypisuje contentom tablicy labeli lab_pizz[] nazwy skladnikow z bazy danych, wyswietla liste i obrazki skladnikow
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.SQL_max_id">
+            <summary>
+            Przypisuje dla max_id_zam ID poprzedniego zamówienia pobrane z bazy
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Usun_zam">
+            <summary>
+            zastepuje usuniete zamowienie kolejnymi i zmienia kwotę do zapłaty
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.tworz_tablice">
+            <summary>
+            Przypisuje elementom tablic odpowiadające im kontrolki
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.SQL_buttony_z_nazwami_kreator(System.String)">
+            <summary>
+            Przypisuje contentom tablicy buttonów tab_skladnikow[] nazwy skladnikow z bazy danych
+            </summary>
+            <param name = "sql" > treść zapytania SQL
+            </param>
+        </member>
+        <member name="M:Pizzeria.Projekt.Dalej(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Przewija listę ze skladnikami do przodu
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Wstecz(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Przewija listę ze skladnikami wstecz
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Rozmiar_srednia2_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Ustawia contenty,zmienia ceny skladnikow dla sredniej pizzy oraz podswietla wybrany rozmiar dla okna kreatora  
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Rozmiar_duza2_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Ustawia contenty,zmienia ceny skladnikow dla duzej pizzy oraz podswietla wybrany rozmiar  dla okna kreatora
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.licz_sum_skl(System.Int32)">
+            <summary>
+            Dodaje do sumy cenę wybranego skladnika
+            </summary>
+            <param name = "id_skladnika" > ID skladnika
+            </param>
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr1_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=1
+            </summary>     
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr2_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=2
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr3_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=3
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr4_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=4
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr5_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=5
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr6_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=6
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr7_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=7
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr8_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=8
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr9_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=10
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr10_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=11
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr11_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=12
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Nr12_g_MouseLeftButtonDown(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybor skladnika o ID=13
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Wybierz_Pizze_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Przechodzi do menu wyboru pizzy
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.kompozycja_Click_1(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Przechodzi do menu kreatora pizzy
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.zamow_Click_2(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Przechodzi do menu zamowienia
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Anuluj_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Przechodzi do menu glownego
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Dodaj_zamowienie_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Dodaje zamowienia z menu wyboru pizzy do listy w menu glownym i zamowienia i przechodzi do menu glownego
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Anuluj_button1_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Przechodzi do menu glownego
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Dodaj_zamowienie_button_Click_1(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Dodaje zamowienie z kreatora pizz do listy w menu glownym i zamowienia i przechodzi do menu glownego
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Anuluj_button2_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Przechodzi do menu glownego
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Zamow_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Dodaje nowe zamówienie do bazy i przypisuje mu ID
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.restart">
+            <summary>
+            Restartuje program
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Gotowka_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Przechodzi do okna 'numerek', wyswietla numer zamowienia, restartuje program
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Blik_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wyświetla pole do wpisania kodu blik
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Pizza_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybiera pizze od id=1 i podswietla wybór
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Pizza_button1_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybiera pizze od id=2 i podswietla wybór
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Pizza_button2_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybiera pizze od id=3 i podswietla wybór
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Pizza_button3_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybiera pizze od id=4 i podswietla wybór
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Pizza_button4_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybiera pizze od id=5 i podswietla wybór
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Pizza_button5_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybiera pizze od id=6 i podswietla wybór
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Pizza_button6_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybiera pizze od id=7 i podswietla wybór
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Pizza_button7_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybiera pizze od id=8 i podswietla wybór
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Pizza_button8_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wybiera pizze od id=10 i podswietla wybór
+            </summary> 
+        </member>
+        <member name="M:Pizzeria.Projekt.Rozmiar_srednia_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Ustawia contenty,zmienia ceny skladnikow dla sredniej pizzy oraz podswietla wybrany rozmiar dla okna wyboru pizzy  
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Rozmiar_duza_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Ustawia contenty,zmienia ceny skladnikow dla dużej pizzy oraz podswietla wybrany rozmiar dla okna wyboru pizzy  
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Del_zam1_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Usuwa pierwsze zamówienie z listy zamówień
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Del_zam2_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Usuwa drugie zamówienie z listy zamówień
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Del_zam3_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Usuwa trzecie zamówienie z listy zamówień
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Del_zam4_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Usuwa czwarte zamówienie z listy zamówień
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Del_zam5_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Usuwa piąte zamówienie z listy zamówień
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Del_zam6_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Usuwa szóste zamówienie z listy zamówień
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Del_zam7_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Usuwa siódme zamówienie z listy zamówień
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Del_zam8_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Usuwa ósme zamówienie z listy zamówień
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Del_zam9_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Usuwa dziewiąte zamówienie z listy zamówień
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Del_zam10_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Usuwa dziesiąte zamówienie z listy zamówień
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.Potw_blik_button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Wyświetla MessageBox o niepoprawnym kodzie BLIK
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt._MouseMove(System.Object,System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Umożliwia scrollowanie list zamówień za pomocą LeftMouseButton
+            </summary>
+        </member>
+        <member name="M:Pizzeria.Projekt.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pizzeria.Properties.Resources">
+            <summary>
+              Silnie typizowana klasa zasobów do wyszukiwania zlokalizowanych ciągów itd.
+            </summary>
+        </member>
+        <member name="P:Pizzeria.Properties.Resources.ResourceManager">
+            <summary>
+              Zwraca buforowane wystąpienie składnika ResourceManager używane przez tę klasę.
+            </summary>
+        </member>
+        <member name="P:Pizzeria.Properties.Resources.Culture">
+            <summary>
+              Przesłania właściwość CurrentUICulture bieżącego wątku dla wszystkich
+              przypadków przeszukiwania zasobów za pomocą tej silnie typizowanej klasy zasobów.
+            </summary>
+        </member>
+    </members>
+</doc>
