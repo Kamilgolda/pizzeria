@@ -743,7 +743,7 @@
 
 
 
-            <Button Content="◄" HorizontalAlignment="Left" Height="150"  VerticalAlignment="Bottom" Width="37" Margin="10,0,0,105" Click="Wstecz" Foreground="Black">
+            <Button x:Name="lewo" Content="◄" HorizontalAlignment="Left" Height="150"  VerticalAlignment="Bottom" Width="37" Margin="10,0,0,105" Click="Wstecz" Foreground="Black" x:FieldModifier="public">
                 <Button.Background>
                     <LinearGradientBrush>
                         <LinearGradientBrush.RelativeTransform>
@@ -764,7 +764,7 @@
             </Button>
 
 
-            <Button Content="►" HorizontalAlignment="Right" Height="150"  VerticalAlignment="Bottom" Width="37" Margin="0,0,10,105" Click="Dalej" Foreground="#FF2B0076">
+            <Button x:Name="prawo" Content="►" HorizontalAlignment="Right" Height="150"  VerticalAlignment="Bottom" Width="37" Margin="0,0,10,105" Click="Dalej" Foreground="#FF2B0076" x:FieldModifier="public">
                 <Button.Background>
                     <LinearGradientBrush>
                         <LinearGradientBrush.RelativeTransform>

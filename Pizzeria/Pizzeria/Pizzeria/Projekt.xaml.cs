@@ -25,72 +25,87 @@ namespace Pizzeria
         /// <summary>
         /// Przechowuje dane w celu przewijania listy składników w kreatorze
         /// </summary>
-        int licznik = 1; //do kreatora
+        public int licznik = 1; //do kreatora
         /// <summary>
         /// Przechowuje nazwę ostatnio wybranej pizzy
         /// </summary>
-        string nazwa_wyb_pizzy; //przypisanie nazwy wybranej pizzy
+        public string nazwa_wyb_pizzy; //przypisanie nazwy wybranej pizzy
         /// <summary>
         /// Przechowuje ID ostatnio wybranej pizzy
         /// </summary>
-        string id_wyb_pizzy = "0"; //przypisanie id wybranej pizzy
+        public string id_wyb_pizzy = "0"; //przypisanie id wybranej pizzy
         /// <summary>
         /// Przechowuje ID ostatnio wybranego skladnika
         /// </summary>
-        int id_wyb_skladnika = 0; //przypisanie id wybranemu skladnikowi
+        public int id_wyb_skladnika = 0; //przypisanie id wybranemu skladnikowi
         /// <summary>
         /// Przechowuje rozmiar wybranej pizzy
         /// </summary>
-        string rozmiar_pizzy = "0"; // przypisanie rozmiaru pizzy
+        public string rozmiar_pizzy = "0"; // przypisanie rozmiaru pizzy
         /// <summary>
         /// Przechowuje cenę skladnika dla sredniej pizzy
         /// </summary>
-        int cena_sr = 0; // cena aktualnego skladnika dla sredniej pizzy
+        public int cena_sr=0; // cena aktualnego skladnika dla sredniej pizzy
         /// <summary>
         /// Przechowuje cenę skladnika dla dużej pizzy
         /// </summary>
-        int cena_d = 0; // cena aktualnego skladnika dla duzej pizzy
+        public int cena_d = 0; // cena aktualnego skladnika dla duzej pizzy
         /// <summary>
         /// Przechowuje sumę kosztów zamówienia
         /// </summary>
-        int suma_zam = 0; //przypisanie sumy kosztow zamowienia
+        public int suma_zam = 0; //przypisanie sumy kosztow zamowienia
         /// <summary>
         /// Przechowuje sumę cen skladników sredniej pizzy wraz z ceną sredniej pizzy bez składników
         /// </summary>
-        int suma_skladnikow_sr = 8; //suma cen skladnikow + cena startowa dla sr pizzy
+        public int suma_skladnikow_sr = 8; //suma cen skladnikow + cena startowa dla sr pizzy
         /// <summary>
         /// Przechowuje sumę cen skladników duzej pizzy wraz z ceną dużej pizzy bez składników
         /// </summary>
-        int suma_skladnikow_d = 10; //suma cen skladnikow + cena startowa dla duzej pizzy
+        public int suma_skladnikow_d = 10; //suma cen skladnikow + cena startowa dla duzej pizzy
         /// <summary>
         /// Przechowuje numer ID zamówienia które jest realizowane
         /// </summary>
-        int max_id_zam = 0; //maksymalne id zapisanych w bazie zamowien
+        public int max_id_zam = 0; //maksymalne id zapisanych w bazie zamowien
+        /// <summary>
+        /// Tablica na potrzeby dodania contentow buttonom
+        /// </summary>
+        public Button[] tab_pizz = new Button[9];
+        /// <summary>
+        /// Tablica na potrzeby dodania skladnikow na liste
+        /// </summary>
+        public Label[] lab_pizz = new Label[9];
         /// <summary>
         /// Tablica przechowująca dane zamówień.
         /// </summary>
-        string[,] zamowienia = new string[10, 15]; //tablica parametrow zamowienia
+        public string[,] zamowienia = new string[10, 15]; //tablica parametrow zamowienia
         /// <summary>
         /// Tablica z nazwami zamówień dla grida 'menu'
         /// </summary>
-        Label[] zamowienie_lab = new Label[10]; //tablica nazw zamowien dla menu
+        public Label[] zamowienie_lab = new Label[10]; //tablica nazw zamowien dla menu
         /// <summary>
         /// Tablica z nazwami zamówień dla grida 'zamowienie'
         /// </summary>
-        Label[] zamowienie_lab1 = new Label[10];//tablica nazw zamowien dla zamow
+        public Label[] zamowienie_lab1 = new Label[10];//tablica nazw zamowien dla zamow
         /// <summary>
         /// Tablica z buttonami usuniecia zamówień dla grida 'menu'
         /// </summary>
-        Button[] delzam = new Button[10];//tablica buttonow usuniecia dla menu
+        public Button[] delzam = new Button[10];//tablica buttonow usuniecia dla menu
         /// <summary>
         /// Tablica z buttonami usuniecia zamówień dla grida 'zamow'
         /// </summary>
-        Button[] delzam1 = new Button[10];// tablica buttonow usuniecia dla zamow
-        SqlConnection polacz;// pole do polaczenia z baza danych
+        public Button[] delzam1 = new Button[10];// tablica buttonow usuniecia dla zamow
+        /// <summary>
+        /// Pole do polaczenia z baza danych
+        /// </summary>
+        public SqlConnection polacz;// pole do polaczenia z baza danych
+        /// <summary>
+        /// Stan polaczenia z baza danych
+        /// </summary>
+        public bool polaczono = false;
         /// <summary>
         /// Objekt na potrzeby scrollowania list zamowien za pomoca LeftMouseButton
         /// </summary>
-        Point oldMousePosition = new Point();
+        public Point oldMousePosition = new Point();
         /// <summary>
         /// Konstruktor klasy Projekt
         /// </summary>
@@ -115,6 +130,7 @@ namespace Pizzeria
             try
             {
                 polaczenie.Open();
+                polaczono = true;
             }
             catch
             {
@@ -188,18 +204,6 @@ namespace Pizzeria
             {
                 odczyt = new SqlCommand(sql, polacz);
                 dataReader = odczyt.ExecuteReader();
-                Button[] tab_pizz = new Button[9];
-                    tab_pizz[0] = pizza_button;
-                    tab_pizz[1] = pizza_button1;
-                    tab_pizz[2] = pizza_button2;
-                    tab_pizz[3] = pizza_button3;
-                    tab_pizz[4] = pizza_button4;
-                    tab_pizz[5] = pizza_button5;
-                    tab_pizz[6] = pizza_button6;
-                    tab_pizz[7] = pizza_button7;
-                    tab_pizz[8] = pizza_button8;
-                    
-
                  while (dataReader.Read())
                  {
                     for (int i = 0; i < 9; i++)
@@ -227,7 +231,7 @@ namespace Pizzeria
         /// <summary>
         /// Przypisuje contentom tablicy labeli lab_pizz[] nazwy skladnikow z bazy danych, wyswietla liste i obrazki skladnikow
         /// </summary>
-        private void wybor_pizzy(string id)
+        public void wybor_pizzy(string id)
         {
             zl_wyb.Visibility = Visibility.Hidden;
             kwota_kr.Content = "";
@@ -240,16 +244,6 @@ namespace Pizzeria
             {
                 odczyt = new SqlCommand(sql, polacz);
                 dataReader = odczyt.ExecuteReader();
-                Label[] lab_pizz = new Label[9];
-                lab_pizz[0] = skladnik_lab;
-                lab_pizz[1] = skladnik_lab1;
-                lab_pizz[2] = skladnik_lab2;
-                lab_pizz[3] = skladnik_lab3;
-                lab_pizz[4] = skladnik_lab4;
-                lab_pizz[5] = skladnik_lab5;
-                lab_pizz[6] = skladnik_lab6;
-                lab_pizz[7] = skladnik_lab7;
-                lab_pizz[8] = skladnik_lab8;
 
                 sos_pom.Visibility = Visibility.Hidden;
                 ser.Visibility = Visibility.Hidden;
@@ -342,7 +336,7 @@ namespace Pizzeria
         /// <summary>
         /// zastepuje usuniete zamowienie kolejnymi i zmienia kwotę do zapłaty
         /// </summary>
-        private void Usun_zam()
+        public void Usun_zam()
         {
             for (int i = 0; i < 9; i++)
             {
@@ -422,6 +416,26 @@ namespace Pizzeria
             delzam1[7] = del_zam18_button;
             delzam1[8] = del_zam19_button;
             delzam1[9] = del_zam110_button;
+
+            tab_pizz[0] = pizza_button;
+            tab_pizz[1] = pizza_button1;
+            tab_pizz[2] = pizza_button2;
+            tab_pizz[3] = pizza_button3;
+            tab_pizz[4] = pizza_button4;
+            tab_pizz[5] = pizza_button5;
+            tab_pizz[6] = pizza_button6;
+            tab_pizz[7] = pizza_button7;
+            tab_pizz[8] = pizza_button8;
+
+            lab_pizz[0] = skladnik_lab;
+            lab_pizz[1] = skladnik_lab1;
+            lab_pizz[2] = skladnik_lab2;
+            lab_pizz[3] = skladnik_lab3;
+            lab_pizz[4] = skladnik_lab4;
+            lab_pizz[5] = skladnik_lab5;
+            lab_pizz[6] = skladnik_lab6;
+            lab_pizz[7] = skladnik_lab7;
+            lab_pizz[8] = skladnik_lab8;
         }
 
         //kreator
@@ -476,7 +490,7 @@ namespace Pizzeria
         /// <summary>
         /// Przewija listę ze skladnikami do przodu
         /// </summary>
-        private void Dalej(object sender, RoutedEventArgs e)
+        public void Dalej(object sender, RoutedEventArgs e)
         {
             licznik++;
             if (licznik == 0)
@@ -525,7 +539,7 @@ namespace Pizzeria
         /// <summary>
         /// Przewija listę ze skladnikami wstecz
         /// </summary>
-        private void Wstecz(object sender, RoutedEventArgs e)
+        public void Wstecz(object sender, RoutedEventArgs e)
         {
             licznik--;
             if (licznik==0)
@@ -595,7 +609,7 @@ namespace Pizzeria
         /// </summary>
         /// <param name = "id_skladnika" > ID skladnika
         /// </param>
-        private void licz_sum_skl(int id_skladnika)
+        public void licz_sum_skl(int id_skladnika)
         {
             
                 SqlCommand odczyt;
